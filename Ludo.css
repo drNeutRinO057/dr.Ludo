@@ -1,0 +1,809 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #db1515;
+  --yellow: #e3db01;
+  --blue: #108be9;
+  --green: #01bb04;
+
+  --TockenBorderPassive: #ffffff;
+  --TockenBorderActive: #6a0303;
+
+  --p1color: var(--red);
+  --p2color: var(--green);
+  --p3color: var(--blue);
+  --p4color: var(--yellow);
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #0b3954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media (orientation: portrait) {
+  .selectbox {
+    width: 100%;
+    height: 20vmin;
+    background-color: #e5f0ecc1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+@media (orientation: landscape) {
+  .selectbox {
+    width: 20%;
+    height: 100%;
+    background-color: #c5f1f1cb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+  }
+
+  .welcome {
+    width: 100%;
+    height: 12.5vmin;
+    font-size: 7.5vmin;
+    background-color: #0930309f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gamemode {
+    width: 100%;
+    height: 15vmin;
+    padding: 1vmin;
+    margin-bottom: 5vmin;
+    font-size: 3vmin;
+    background-color: #c5f1f1cb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .radio-group {
+    width: 100%;
+    height: 10vmin;
+    padding: 2vmin;
+    background-color: #c6ffffcb;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .radio-group input[type="radio"] {
+    width: 3.5vmin;
+    height: 3.5vmin;
+    margin-right: 0px;
+    accent-color: #8d2626;
+    cursor: pointer;
+  }
+
+  .radio-group label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .nameboxes {
+    margin-bottom: 2.5vmin;
+  }
+
+  .p2 label,
+  .p3 label,
+  .p4 label {
+    /* width: 30%;
+    height: 100%; */
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .name1,
+  .name2,
+  .name3,
+  .name4 {
+    height: 5vmin;
+    margin: 2vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide the default checkbox */
+  .tickbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom checkbox */
+  .tickbox .custom-checkbox {
+    display: inline-block;
+    width: 4vmin;
+    height: 4vmin;
+    /* margin-bottom: 2.5vmin; */
+    background-color: #f0f0f0;
+    border: 0.75vmin solid #dddddd;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .tickbox .custom-checkbox1 {
+    border-color: var(--red);
+  }
+
+  .tickbox .custom-checkbox2 {
+    border-color: var(--yellow);
+  }
+
+  .tickbox .custom-checkbox3 {
+    border-color: var(--blue);
+  }
+
+  .tickbox .custom-checkbox4 {
+    border-color: var(--green);
+  }
+
+  /* Checkmark (hidden by default) */
+  .tickbox .custom-checkbox::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Show checkmark when checked */
+  /* .tickbox input[type="checkbox"]:checked + .custom-checkbox::after {
+  display: block;
+} */
+
+  /* Change background color when checked */
+  .pname1 input[type="checkbox"]:checked + .custom-checkbox {
+    background: linear-gradient(145deg, #fe8484, #ff1515);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #6f0000;
+    background-color: var(--red);
+  }
+
+  /* Change background color when checked */
+  .pname2 input[type="checkbox"]:checked + .custom-checkbox {
+    background: linear-gradient(145deg, #fcffd5, #eeff00);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #717900;
+    background-color: var(--yellow);
+    border-color: var(--yellow);
+  }
+
+  /* Change background color when checked */
+  .pname3 input[type="checkbox"]:checked + .custom-checkbox {
+    background: linear-gradient(145deg, #84b7fe, #227bf9);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #003784;
+    background-color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  /* Change background color when checked */
+  .pname4 input[type="checkbox"]:checked + .custom-checkbox {
+    background: linear-gradient(145deg, #cdfac7, #1aff00);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #0e9100;
+    background-color: var(--green);
+    border-color: var(--green);
+  }
+
+  .pInput {
+    width: 75%;
+    height: 3.5vmin;
+    text-align: center;
+    font-size: 2.25vmin;
+    border-radius: 1.25vmin;
+  }
+
+  .pInput:focus{
+    border: none;
+  }
+
+  .pInput1:disabled,
+  .pInput2:disabled,
+  .pInput3:disabled,
+  .pInput4:disabled {
+    border: 0.35vmin solid #000000;
+  }
+
+  .pInput1:enabled {
+    border: 0.35vmin solid var(--red);
+  }
+  
+  .pInput2:enabled {
+    border: 0.35vmin solid var(--yellow);
+  }
+
+  .pInput3:enabled {
+    border: 0.35vmin solid var(--blue);
+  }
+
+  .pInput4:enabled {
+    border: 0.35vmin solid var(--green);
+  }
+
+  .startgame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .startgame button {
+    width: 12vmin;
+    height: 5vmin;
+    font-size: 2.5vmin;
+    line-height: 5vmin;
+    color: #bbfff4;
+    background-color: #13468e;
+    border: none;
+    border-radius: 2vmin;
+    margin-bottom: 2vmin;
+    background: linear-gradient(145deg, #7cb2ff, #00337bb9);
+    box-shadow: 0.15vmin 0.15vmin 0.5vmin #292929,
+      -0.15vmin -0.15vmin 0.5vmin #fafafa;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: #bbfff4;
+    background-color: #1870eb;
+  }
+
+  button:active {
+    color: #00ff1e;
+    border: 0.005vmin solid #69a8ff;
+    background: #004ebb9a;
+    box-shadow: none;
+
+    /* background: linear-gradient(145deg, #cacaca, #f0f0f0);
+    box-shadow: 2px 2px 4px #5a5a5a, 
+                -2px -2px 4px #ffffff; */
+  }
+
+  .msg {
+    width: 75%;
+    font-size: 2.5vmin;
+    text-align: center;
+    color: #410064;
+  }
+}
+
+.container {
+  height: 95vmin;
+  width: 80vmin;
+  /* border: 1.5vmin solid #000000; */
+  border-radius: 0.5vmin;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ludobox {
+  height: 80vmin;
+  width: 80vmin;
+  border: 1vmin solid #102325;
+  /* border-radius: 0.25vmin; */
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbox {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxA {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5vmin solid #6f0000;
+  /* background-color: #e11212; */
+  position: relative;
+}
+
+.boxA p,
+.boxB p {
+  position: absolute;
+  top: 1%;
+  font-size: 3vmin;
+  color: #ffffff;
+}
+
+.boxC p,
+.boxD p {
+  position: absolute;
+  bottom: 1%;
+  font-size: 3vmin;
+  color: #ffffff;
+}
+
+.boxAa,
+.boxBb,
+.boxCc,
+.boxDd {
+  height: 20vmin;
+  width: 20vmin;
+  border-radius: 0.5vmin;
+  border: 0.5vmin solid #2f2323ce;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.boxAleft,
+.boxAright,
+.boxBleft,
+.boxBright,
+.boxCleft,
+.boxCright,
+.boxDleft,
+.boxDright {
+  /* margin: vmin; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxAaa {
+  height: 6vmin;
+  width: 6vmin;
+  border: 0.2vmin solid #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tocken {
+  width: 4.5vmin;
+  height: 4.5vmin;
+  border: 0.3vmin dashed var(--TockenBorderPassive);
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fill {
+  border: 0.35vmin solid #000000;
+}
+
+.tocken1-1 .fill,
+.tocken1-2 .fill,
+.tocken1-3 .fill,
+.tocken1-4 .fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffa6a6, #c90000);
+  background-color: var(--p1color);
+}
+
+.tocken2-1 .fill,
+.tocken2-2 .fill,
+.tocken2-3 .fill,
+.tocken2-4 .fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #9dfe9e, #007002);
+  background-color: var(--p2color);
+  opacity: 0.75;
+}
+
+.tocken3-1 .fill,
+.tocken3-2 .fill,
+.tocken3-3 .fill,
+.tocken3-4 .fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #88cbff, #004981);
+  background-color: var(--p3color);
+  opacity: 0.75;
+}
+
+.tocken4-1 .fill,
+.tocken4-2 .fill,
+.tocken4-3 .fill,
+.tocken4-4 .fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffffff, #c3bc00);
+  background-color: var(--p4color);
+  opacity: 0.75;
+}
+
+.upboxes {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.boxB {
+  height: 100%;
+  width: 40%;
+  border: 0.5vmin solid #006a13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #000000; */
+  position: relative;
+}
+
+.boxBbb {
+  height: 6vmin;
+  width: 6vmin;
+  border: 0.2vmin solid #000000;
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.midbox {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftboxes {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.centrebox {
+  height: 100%;
+  width: 20%;
+  /* border: 0.05vmin solid #5353537f; */
+  display: flex;
+  flex-direction: column;
+
+  /* background-color: #dee112; */
+}
+
+.triup {
+  width: 100%;
+  height: 100%;
+  border-left: 7.815vmin solid transparent;
+  border-right: 7.815vmin solid transparent;
+  border-top: 7.815vmin solid var(--green);
+}
+
+.centremid {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.trileft {
+  width: 100%;
+  height: 15.63vmin;
+  border-top: 7.815vmin solid transparent;
+  border-left: 7.815vmin solid var(--red);
+  border-bottom: 7.815vmin solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.triright {
+  width: 100%;
+  height: 15.63vmin;
+  border-top: 7.815vmin solid transparent;
+  border-right: 7.815vmin solid var(--yellow);
+  border-bottom: 7.815vmin solid transparent;
+  /* display: flex;
+    align-items: center;
+    justify-content: center; */
+  position: absolute;
+  right: -100%;
+}
+
+.tridown {
+  width: 100%;
+  height: 100%;
+  border-left: 7.815vmin solid transparent;
+  border-right: 7.815vmin solid transparent;
+  border-bottom: 7.815vmin solid var(--blue);
+}
+
+.rightboxes {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.bottombox {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxC {
+  height: 100%;
+  width: 40%;
+  border: 0.5vmin solid #004ea1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #176ad7; */
+  position: relative;
+}
+
+.boxCcc {
+  height: 6vmin;
+  width: 6vmin;
+  border: 0.2vmin solid #000000;
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.downboxes {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.boxD {
+  height: 100%;
+  width: 40%;
+  border: 0.5vmin solid #8d8800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #ddd710; */
+  position: relative;
+}
+
+.boxDdd {
+  height: 6vmin;
+  width: 6vmin;
+  border: 0.2vmin solid #000000;
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  height: 5.21vmin;
+  width: 5.21vmin;
+  border: 0.05vmin solid #5353537f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f9fa;
+  font-size: 90%;
+}
+
+.box51 {
+  color: var(--green);
+}
+
+.box12 {
+  color: var(--yellow);
+}
+
+.box25 {
+  color: var(--blue);
+}
+
+.box38 {
+  color: var(--red);
+}
+
+.boxA1,
+.boxA2,
+.boxA3,
+.boxA4,
+.boxA5,
+.box40,
+.boxA,
+.boxAaa {
+  background-color: var(--red);
+}
+
+.boxB1,
+.boxB2,
+.boxB3,
+.boxB4,
+.boxB5,
+.box1,
+.boxB,
+.boxBbb {
+  background-color: var(--green);
+}
+
+.boxC1,
+.boxC2,
+.boxC3,
+.boxC4,
+.boxC5,
+.box27,
+.boxC,
+.boxCcc {
+  background-color: var(--blue);
+}
+
+.boxD1,
+.boxD2,
+.boxD3,
+.boxD4,
+.boxD5,
+.box14,
+.boxD,
+.boxDdd {
+  background-color: var(--yellow);
+}
+
+.playerstop {
+  height: 8vmin;
+  width: 100%;
+  /* border-width: 1vmin 1vmin 0vmin 1vmin;
+  border-style: solid;
+  border-color: #102325; */
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playersbottom {
+  height: 8vmin;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player1 {
+  height: 100%;
+  width: 20%;
+  color: #ffffff;
+  border-width: 1vmin 1vmin 0vmin 1vmin;
+  border-style: solid;
+  border-color: #102325;
+  background-color: var(--p1color);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.player2 {
+  height: 100%;
+  width: 20%;
+  color: #ffffff;
+  border-width: 1vmin 1vmin 0vmin 1vmin;
+  border-style: solid;
+  border-color: #102325;
+  background-color: var(--p2color);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.player3 {
+  height: 100%;
+  width: 20%;
+  color: #ffffff;
+  border-width: 0vmin 1vmin 1vmin 1vmin;
+  border-style: solid;
+  border-color: #102325;
+  background-color: var(--p3color);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.player4 {
+  height: 100%;
+  width: 20%;
+  color: #ffffff;
+  border-width: 0vmin 1vmin 1vmin 1vmin;
+  border-style: solid;
+  border-color: #102325;
+  background-color: var(--p4color);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tockenbox {
+  height: 100%;
+  width: 50%;
+}
+
+.diebox {
+  height: 100%;
+  width: 50%;
+}
+
+.theDice {
+  height: 100%;
+  width: 20%;
+  /* margin-top: 0.5vmin; */
+  border-radius: 1vmin;
+  background-color: #cee6e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
