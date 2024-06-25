@@ -23,6 +23,7 @@ let maxPlayer = 0;
 let allowPlayer = 0;
 
 window.onload = () => {
+  HideDice();
   DisableButtons();
   HideTockens();
 };
@@ -38,7 +39,6 @@ const ColourCombination = {
   },
 };
 
-// HideDice();
 SelectPlayer();
 CheckboxSelection();
 StartButton();
@@ -58,7 +58,7 @@ StartButton();
 // console.log(playerC);
 // console.log(playerD);
 // console.log(playerNames);
-console.log(ColourCombination.twoPlayers.RY);
+// console.log(ColourCombination.twoPlayers.RY);
 
 function HideDice(){
   dieboxes.forEach(diebox => {
