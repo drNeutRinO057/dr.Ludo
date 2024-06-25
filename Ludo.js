@@ -17,13 +17,13 @@ const playerD = document.querySelector(`.boxD p`);
 
 const button = document.querySelector(`.start`);
 
-let diebox = document.querySelector(".theDice");
+let dieboxes = document.querySelectorAll(".theDice");
+
 let maxPlayer = 0;
 let allowPlayer = 0;
 
 window.onload = () => {
   DisableButtons();
-  diebox.classList.add("hide");
   HideTockens();
 };
 
@@ -38,6 +38,7 @@ const ColourCombination = {
   },
 };
 
+// HideDice();
 SelectPlayer();
 CheckboxSelection();
 StartButton();
@@ -47,7 +48,7 @@ StartButton();
 // console.log(tickboxes);
 // console.log(option2.value);
 // console.log(option3.value);
-console.log(p1Name);
+// console.log(p1Name);
 // console.log(p2Name);
 // console.log(p3Name);
 // console.log(p4Name);
@@ -58,6 +59,12 @@ console.log(p1Name);
 // console.log(playerD);
 // console.log(playerNames);
 console.log(ColourCombination.twoPlayers.RY);
+
+function HideDice(){
+  dieboxes.forEach(diebox => {
+    diebox.classList.add("hide");
+  });
+}
 
 function UncheckBoxes() {
   tickboxes.forEach((tickbox) => {

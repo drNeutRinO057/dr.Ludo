@@ -15,9 +15,12 @@ body {
   font-family: Arial, sans-serif;
 } */
 :root{
-  --cube-size: 6vmin;
-  --face-shift: 3vmin;
-  --die-color: #01bb04;
+  --cube-size: 5.5vmin;
+  --face-shift: 2.75vmin;
+  --die-colorRed: #db1515;
+  --die-colorYellow: #e3db01;
+  --die-colorBlue: #108be9;
+  --die-colorGreen: #01bb04;
 }
 
 .scene {
@@ -42,12 +45,27 @@ body {
   padding: 1.25%;
   border: 0.15vmin solid #000;
   border-radius: 0.6vmin;
-  background-color: var(--die-color);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 2vmin;
+}
+
+.player1 .face {
+  background-color: var(--die-colorRed);
+}
+
+.player2 .face {
+  background-color: var(--die-colorGreen);
+}
+
+.player3 .face {
+  background-color: var(--die-colorBlue);
+}
+
+.player4 .face {
+  background-color: var(--die-colorYellow);
 }
 
 .face p {

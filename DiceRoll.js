@@ -5,13 +5,17 @@ let randomY = 0;
 let randomZ = 0;
 
 const face = document.querySelectorAll(".face");
-const cube = document.querySelector(".cube");
+const cubes = document.querySelectorAll(".cube");
 
 function rollDice() {
   randomX = Math.floor(Math.random() * 4) * 90;
   randomY = Math.floor(Math.random() * 4) * 90;
   randomZ = Math.floor(Math.random() * 4) * 90;
-  cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
+  cubes.forEach(cube => {
+    cube.addEventListener("click", () => {
+      cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
+    })
+  });
 return randomX, randomY, randomZ;
 }
 

@@ -132,6 +132,12 @@ body {
     justify-content: center;
   }
 
+  .tickbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   /* Hide the default checkbox */
   .tickbox input[type="checkbox"] {
     position: absolute;
@@ -735,7 +741,7 @@ body {
   height: 100%;
   width: 20%;
   color: #ffffff;
-  border-width: 1vmin 1vmin 0vmin 1vmin;
+  border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
   border-style: solid;
   border-color: #102325;
   background-color: var(--p1color);
@@ -748,7 +754,7 @@ body {
   height: 100%;
   width: 20%;
   color: #ffffff;
-  border-width: 1vmin 1vmin 0vmin 1vmin;
+  border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
   border-style: solid;
   border-color: #102325;
   background-color: var(--p2color);
@@ -761,7 +767,7 @@ body {
   height: 100%;
   width: 20%;
   color: #ffffff;
-  border-width: 0vmin 1vmin 1vmin 1vmin;
+  border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
   border-style: solid;
   border-color: #102325;
   background-color: var(--p3color);
@@ -774,7 +780,7 @@ body {
   height: 100%;
   width: 20%;
   color: #ffffff;
-  border-width: 0vmin 1vmin 1vmin 1vmin;
+  border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
   border-style: solid;
   border-color: #102325;
   background-color: var(--p4color);
@@ -795,9 +801,9 @@ body {
 
 .theDice {
   height: 100%;
-  width: 20%;
+  width: 100%;
   /* margin-top: 0.5vmin; */
-  border-radius: 1vmin;
+  /* border-radius: 1vmin; */
   background-color: #cee6e2;
   display: flex;
   align-items: center;
