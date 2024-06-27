@@ -195,14 +195,14 @@ body {
 } */
 
   /* Change background color when checked */
-  .pname1 input[type="checkbox"]:checked + .custom-checkbox {
+  .pname1 input[type="checkbox"]:checked+.custom-checkbox {
     background: linear-gradient(145deg, #fe8484, #ff1515);
     box-shadow: 0.15vmin 0.15vmin 0.25vmin #6f0000;
     background-color: var(--red);
   }
 
   /* Change background color when checked */
-  .pname2 input[type="checkbox"]:checked + .custom-checkbox {
+  .pname2 input[type="checkbox"]:checked+.custom-checkbox {
     background: linear-gradient(145deg, #fcffd5, #eeff00);
     box-shadow: 0.15vmin 0.15vmin 0.25vmin #717900;
     background-color: var(--yellow);
@@ -210,7 +210,7 @@ body {
   }
 
   /* Change background color when checked */
-  .pname3 input[type="checkbox"]:checked + .custom-checkbox {
+  .pname3 input[type="checkbox"]:checked+.custom-checkbox {
     background: linear-gradient(145deg, #84b7fe, #227bf9);
     box-shadow: 0.15vmin 0.15vmin 0.25vmin #003784;
     background-color: var(--blue);
@@ -218,7 +218,7 @@ body {
   }
 
   /* Change background color when checked */
-  .pname4 input[type="checkbox"]:checked + .custom-checkbox {
+  .pname4 input[type="checkbox"]:checked+.custom-checkbox {
     background: linear-gradient(145deg, #cdfac7, #1aff00);
     box-shadow: 0.15vmin 0.15vmin 0.25vmin #0e9100;
     background-color: var(--green);
@@ -233,7 +233,7 @@ body {
     border-radius: 1.25vmin;
   }
 
-  .pInput:focus{
+  .pInput:focus {
     border: none;
   }
 
@@ -247,7 +247,7 @@ body {
   .pInput1:enabled {
     border: 0.35vmin solid var(--red);
   }
-  
+
   .pInput2:enabled {
     border: 0.35vmin solid var(--yellow);
   }

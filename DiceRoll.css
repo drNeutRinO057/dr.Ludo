@@ -14,7 +14,7 @@ body {
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
 } */
-:root{
+:root {
   --cube-size: 5.5vmin;
   --face-shift: 2.75vmin;
   --die-colorRed: #db1515;
@@ -127,7 +127,7 @@ body {
   /* background-color: #fffd82; */
 }
 
-.d1{
+.d1 {
   width: 30%;
   height: 30%;
   border: 0.5vmin solid #211c2d;
@@ -137,18 +137,23 @@ body {
 .front {
   transform: rotateY(0deg) translateZ(var(--face-shift));
 }
+
 .back {
   transform: rotateY(180deg) translateZ(var(--face-shift));
 }
+
 .left {
   transform: rotateY(-90deg) translateZ(var(--face-shift));
 }
+
 .right {
   transform: rotateY(90deg) translateZ(var(--face-shift));
 }
+
 .top {
   transform: rotateX(90deg) translateZ(var(--face-shift));
 }
+
 .bottom {
   transform: rotateX(-90deg) translateZ(var(--face-shift));
 }

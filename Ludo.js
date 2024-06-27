@@ -60,7 +60,7 @@ StartButton();
 // console.log(playerNames);
 // console.log(ColourCombination.twoPlayers.RY);
 
-function HideDice(){
+function HideDice() {
   dieboxes.forEach(diebox => {
     diebox.classList.add("hide");
   });
@@ -237,7 +237,7 @@ function HideTockens() {
   });
 }
 
-function CheckColour() {}
+function CheckColour() { }
 
 function DisplayNames() {
   switch (allowPlayer) {
@@ -258,15 +258,16 @@ function DisplayNames() {
   }
 }
 
-function ShowTockens() {}
+function ShowTockens() { }
 
 function StartGame() {
   // DisplayNames();
 }
 
-function TwoPlayerGame() {}
+function TwoPlayerGame() { }
 
-function ThreePlayerGame() {}
+function ThreePlayerGame() { }
 
-function FourPlayerGame() {}
+function FourPlayerGame() { }
 
+//changes on 27/06/202 at 04:54

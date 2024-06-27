@@ -16,7 +16,7 @@ function rollDice() {
       cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
     })
   });
-return randomX, randomY, randomZ;
+  return randomX, randomY, randomZ;
 }
 
 face.forEach((element) => {
@@ -27,11 +27,11 @@ face.forEach((element) => {
   });
 });
 
-function OutCome(){
+function OutCome() {
   let index = `${randomX / 90},${randomY / 90},${randomZ / 90}`;
   let outcome = mapping[index];
   // if (outcome) {
-    
+
   // }
   // console.log(index);
   console.log(`${outcome}   (${index})`);
