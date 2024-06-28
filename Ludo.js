@@ -5,6 +5,11 @@ const msg = document.querySelector(`.msg`);
 const tockens = document.querySelectorAll(`.tocken`);
 const playerNames = document.querySelectorAll(`.tickbox input[type="text"]`);
 const Placeholders = document.querySelectorAll(`.pInput`);
+const Tockens1 = document.querySelectorAll(".tocken1");
+const Tockens2 = document.querySelectorAll(".tocken2");
+const Tockens3 = document.querySelectorAll(".tocken3");
+const Tockens4 = document.querySelectorAll(".tocken4");
+
 const p1Name = playerNames[0];
 const p2Name = playerNames[1];
 const p3Name = playerNames[2];
@@ -233,7 +238,7 @@ function StartButton() {
         maxPlayer === allowPlayer &&
         tickbox.checked === true
       ) {
-        console.log(tickbox.className);
+        // console.log(tickbox.className);
         msg.innerText = `Ready...`;
         selectbox.classList.add(`hide`);
       } else if (allowPlayer === 0) {
@@ -242,7 +247,11 @@ function StartButton() {
         msg.innerText = `Please select ${allowPlayer} tockens`;
       }
     });
+    if (msg.innerText === `Ready...`) {
+      StartGame();
+    }
     console.log(msg.innerText);
+    console.log(colours);
   });
 }
 
@@ -274,13 +283,154 @@ function DisplayNames() {
   }
 }
 
-function ShowTockens() {
-  colours.forEach(colour => {
-  });
+function ShowTockens(coloursString) {
+  console.log("ShowTockens");
+
+  switch (coloursString) {
+    case Selectedcolours21:
+      // Blue-Green
+      console.log("21 Selected");
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours22:
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours23:
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens4.forEach(Tocken4 => {
+        Tocken4.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours24:
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours25:
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours26:
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+      Tockens4.forEach(Tocken4 => {
+        Tocken4.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours31:
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours32:
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+      Tockens4.forEach(Tocken4 => {
+        Tocken4.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours33:
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+      Tockens4.forEach(Tocken4 => {
+        Tocken4.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours34:
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+      Tockens4.forEach(Tocken4 => {
+        Tocken4.classList.remove("hide");
+      });
+
+      break;
+
+    case Selectedcolours41:
+      Tockens1.forEach(Tocken1 => {
+        Tocken1.classList.remove("hide");
+      });
+      Tockens2.forEach(Tocken2 => {
+        Tocken2.classList.remove("hide");
+      });
+      Tockens3.forEach(Tocken3 => {
+        Tocken3.classList.remove("hide");
+      });
+      Tockens4.forEach(Tocken4 => {
+        Tocken4.classList.remove("hide");
+      });
+
+      break;
+
+    default:
+      break;
+  }
 }
 
+function ShowDice(){}
+
 function StartGame() {
-  // DisplayNames();
+  colours.sort();
+  let coloursString = colours.toString();
+  // console.log(colours);
+
+  DisplayNames(coloursString);
+  ShowTockens(coloursString);
 }
 
 function TwoPlayerGame() { }
@@ -289,4 +439,21 @@ function ThreePlayerGame() { }
 
 function FourPlayerGame() { }
 
-//changes on 27/06/202 at 04:54
+
+let Selectedcolours21 = "Blue,Green";
+let Selectedcolours22 = "Blue,Red";
+let Selectedcolours23 = "Blue,Yellow";
+let Selectedcolours24 = "Green,Red";
+let Selectedcolours25 = "Green,Yellow";
+let Selectedcolours26 = "Red,Yellow";
+
+let Selectedcolours31 = "Blue,Green,Red";
+let Selectedcolours32 = "Green,Red,Yellow";
+let Selectedcolours33 = "Blue,Green,Yellow";
+let Selectedcolours34 = "Blue,Red,Yellow";
+
+let Selectedcolours41 = "Blue,Green,Red,Yellow";
+
+
+
+//changes on 28/06/202 at 04:04
