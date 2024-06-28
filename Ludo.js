@@ -22,6 +22,7 @@ let dieboxes = document.querySelectorAll(".theDice");
 let maxPlayer = 0;
 let allowPlayer = 0;
 let colours = [];
+let colourIndx;
 
 window.onload = () => {
   HideDice();
@@ -141,6 +142,13 @@ function ResetPlaceholders() {
   });
 }
 
+function ClearColours() {
+  // colours.forEach((color) => {
+  //   colours.pop(color);
+  // })
+  colours.length = 0;
+}
+
 function SelectPlayer() {
   options.forEach((option) => {
     option.addEventListener("click", () => {
@@ -150,6 +158,7 @@ function SelectPlayer() {
       if (option.checked === true) {
         DisableAllInputs();
         ResetPlaceholders();
+        ClearColours();
         // console.log(`Allowed Players: ${allowPlayer}`);
         msg.innerText = ``;
       }
@@ -173,14 +182,16 @@ function CheckboxSelection() {
         tickboxClass = tickbox.className;
         DisableInput(tickboxClass);
         msg.innerText = ``;
-        colours.pop(tickboxClass);
+        colourIndx = colours.indexOf(tickboxClass)
+        colours.splice(colourIndx, 1);
       }
       if (maxPlayer > allowPlayer) {
         tickbox.checked = false;
         maxPlayer -= 1;
         tickboxClass = tickbox.className;
         DisableInput(tickboxClass);
-        colours.pop(tickboxClass);
+        colourIndx = colours.indexOf(tickboxClass)
+        colours.splice(colourIndx, 1);
         msg.innerText = `You can't select more than ${allowPlayer} players`;
       }
       if (allowPlayer === 0) {
