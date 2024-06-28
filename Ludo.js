@@ -1,3 +1,4 @@
+// Defining Variables and Parameters...................................................................
 const selectbox = document.querySelector(`.selectbox`);
 const options = document.querySelectorAll(`.radio-group input[name="options"]`);
 const tickboxes = document.querySelectorAll(`.tickbox input[type="checkbox"]`);
@@ -5,15 +6,11 @@ const msg = document.querySelector(`.msg`);
 const tockens = document.querySelectorAll(`.tocken`);
 const playerNames = document.querySelectorAll(`.tickbox input[type="text"]`);
 const Placeholders = document.querySelectorAll(`.pInput`);
+
 const Tockens1 = document.querySelectorAll(".tocken1");
 const Tockens2 = document.querySelectorAll(".tocken2");
 const Tockens3 = document.querySelectorAll(".tocken3");
 const Tockens4 = document.querySelectorAll(".tocken4");
-
-const p1Name = playerNames[0];
-const p2Name = playerNames[1];
-const p3Name = playerNames[2];
-const p4Name = playerNames[3];
 
 const playerA = document.querySelector(`.boxA p`);
 const playerB = document.querySelector(`.boxB p`);
@@ -22,18 +19,39 @@ const playerD = document.querySelector(`.boxD p`);
 
 const button = document.querySelector(`.start`);
 
-let dieboxes = document.querySelectorAll(".theDice");
+const dieboxes = document.querySelectorAll(".theDice");
 
-let maxPlayer = 0;
-let allowPlayer = 0;
-let colours = [];
-let colourIndx;
+const p1tickbox = tickboxes[0];
+const p2tickbox = tickboxes[1];
+const p3tickbox = tickboxes[2];
+const p4tickbox = tickboxes[3];
 
-window.onload = () => {
-  HideDice();
-  DisableButtons();
-  HideTockens();
-};
+const p1Name = playerNames[0];
+const p2Name = playerNames[1];
+const p3Name = playerNames[2];
+const p4Name = playerNames[3];
+
+const p1Placeholder = Placeholders[0];
+const p2Placeholder = Placeholders[1];
+const p3Placeholder = Placeholders[2];
+const p4Placeholder = Placeholders[3];
+
+const die1 = dieboxes[0];
+const die2 = dieboxes[1];
+const die3 = dieboxes[2];
+const die4 = dieboxes[3];
+
+const Selectedcolours21 = "Blue,Green";
+// let Selectedcolours22 = "Blue,Red";
+// let Selectedcolours23 = "Blue,Yellow";
+// let Selectedcolours24 = "Green,Red";
+// let Selectedcolours25 = "Green,Yellow";
+const Selectedcolours26 = "Red,Yellow";
+const Selectedcolours31 = "Blue,Green,Red";
+const Selectedcolours32 = "Green,Red,Yellow";
+const Selectedcolours33 = "Blue,Green,Yellow";
+const Selectedcolours34 = "Blue,Red,Yellow";
+const Selectedcolours41 = "Blue,Green,Red,Yellow";
 
 const ColourCombination = {
   twoPlayers: {
@@ -46,12 +64,31 @@ const ColourCombination = {
   },
 };
 
+let maxPlayer = 0;
+let allowPlayer = 0;
+let colours = [];
+let colourIndx;
+let coloursString;
+
+
+
+
+
+// Main Execution......................................................................................
+
+window.onload = () => {
+  HideDice();
+  DisableButtons();
+  HideTockens();
+};
+
 SelectPlayer();
 CheckboxSelection();
 StartButton();
 
-// Debugging...........................
-//.....................................
+
+// Debugging...........................................................................................
+
 // console.log(tickboxes);
 // console.log(option2.value);
 // console.log(option3.value);
@@ -59,6 +96,8 @@ StartButton();
 // console.log(p2Name);
 // console.log(p3Name);
 // console.log(p4Name);
+// console.log(p1tickbox);
+// console.log(p1Placeholder);
 // console.log(tickboxes[0].className);
 // console.log(playerA);
 // console.log(playerB);
@@ -66,6 +105,12 @@ StartButton();
 // console.log(playerD);
 // console.log(playerNames);
 // console.log(ColourCombination.twoPlayers.RY);
+
+
+
+
+
+// Defining Functions..................................................................................
 
 function HideDice() {
   dieboxes.forEach(diebox => {
@@ -84,6 +129,12 @@ function DisableButtons() {
   playerNames.forEach((playerName) => {
     playerName.disabled = true;
   });
+}
+
+function EnableCheckboxes() {
+  tickboxes.forEach((tickbox) => {
+    tickbox.disabled = false
+  })
 }
 
 function EnableInput() {
@@ -147,6 +198,25 @@ function ResetPlaceholders() {
   });
 }
 
+function ResetSpecificPlaceholder() {
+  if (tickboxClass === "Red") {
+    p1Placeholder.value = ``;
+    p1Placeholder.placeholder = `Player`;
+  }
+  else if (tickboxClass === "Yellow") {
+    p2Placeholder.placeholder = `Player`;
+    p2Placeholder.value = ``;
+  }
+  else if (tickboxClass === "Blue") {
+    p3Placeholder.value = ``;
+    p3Placeholder.placeholder = `Player`;
+  }
+  else if (tickboxClass === "Green") {
+    p4Placeholder.value = ``;
+    p4Placeholder.placeholder = `Player`;
+  }
+}
+
 function ClearColours() {
   // colours.forEach((color) => {
   //   colours.pop(color);
@@ -161,6 +231,7 @@ function SelectPlayer() {
       allowPlayer = option.value;
       allowPlayer = Number(allowPlayer);
       if (option.checked === true) {
+        EnableCheckboxes();
         DisableAllInputs();
         ResetPlaceholders();
         ClearColours();
@@ -182,13 +253,30 @@ function CheckboxSelection() {
         tickboxClass = tickbox.className;
         EnableInput(tickboxClass);
         colours.push(tickboxClass);
+        if (allowPlayer === 2) {
+          if (tickboxClass === "Red" || tickboxClass === "Yellow") {
+            p3tickbox.disabled = true;
+            p4tickbox.disabled = true;
+          }
+          else if (tickboxClass === "Blue" || tickboxClass === "Green") {
+            p1tickbox.disabled = true;
+            p2tickbox.disabled = true;
+          }
+        }
+
       } else if (tickbox.checked === false) {
         maxPlayer -= 1;
         tickboxClass = tickbox.className;
         DisableInput(tickboxClass);
+        ResetSpecificPlaceholder();
         msg.innerText = ``;
         colourIndx = colours.indexOf(tickboxClass)
         colours.splice(colourIndx, 1);
+
+
+        if (allowPlayer === 2 && maxPlayer === 0) {
+          EnableCheckboxes()
+        }
       }
       if (maxPlayer > allowPlayer) {
         tickbox.checked = false;
@@ -203,6 +291,7 @@ function CheckboxSelection() {
         msg.innerText = `Please select number of players`;
       }
       SetPlaceholders(tickbox);
+      colours.sort();
 
       console.log(`Checked: ${tickbox.checked}`);
       console.log(`Selected: ${maxPlayer}`);
@@ -297,47 +386,51 @@ function ShowTockens(coloursString) {
         Tocken2.classList.remove("hide");
       });
 
-      break;
-
-    case Selectedcolours22:
-      Tockens3.forEach(Tocken3 => {
-        Tocken3.classList.remove("hide");
-      });
-      Tockens1.forEach(Tocken1 => {
-        Tocken1.classList.remove("hide");
-      });
+      die3.classList.remove(`hide`);
+      die2.classList.remove(`hide`);
+      TwoPlayerGame(Selectedcolours21)
 
       break;
 
-    case Selectedcolours23:
-      Tockens3.forEach(Tocken3 => {
-        Tocken3.classList.remove("hide");
-      });
-      Tockens4.forEach(Tocken4 => {
-        Tocken4.classList.remove("hide");
-      });
+    // case Selectedcolours22:
+    //   Tockens3.forEach(Tocken3 => {
+    //     Tocken3.classList.remove("hide");
+    //   });
+    //   Tockens1.forEach(Tocken1 => {
+    //     Tocken1.classList.remove("hide");
+    //   });
 
-      break;
+    //   break;
 
-    case Selectedcolours24:
-      Tockens2.forEach(Tocken2 => {
-        Tocken2.classList.remove("hide");
-      });
-      Tockens1.forEach(Tocken1 => {
-        Tocken1.classList.remove("hide");
-      });
+    // case Selectedcolours23:
+    //   Tockens3.forEach(Tocken3 => {
+    //     Tocken3.classList.remove("hide");
+    //   });
+    //   Tockens4.forEach(Tocken4 => {
+    //     Tocken4.classList.remove("hide");
+    //   });
 
-      break;
+    //   break;
 
-    case Selectedcolours25:
-      Tockens2.forEach(Tocken2 => {
-        Tocken2.classList.remove("hide");
-      });
-      Tockens1.forEach(Tocken1 => {
-        Tocken1.classList.remove("hide");
-      });
+    // case Selectedcolours24:
+    //   Tockens2.forEach(Tocken2 => {
+    //     Tocken2.classList.remove("hide");
+    //   });
+    //   Tockens1.forEach(Tocken1 => {
+    //     Tocken1.classList.remove("hide");
+    //   });
 
-      break;
+    //   break;
+
+    // case Selectedcolours25:
+    //   Tockens2.forEach(Tocken2 => {
+    //     Tocken2.classList.remove("hide");
+    //   });
+    //   Tockens1.forEach(Tocken1 => {
+    //     Tocken1.classList.remove("hide");
+    //   });
+
+    //   break;
 
     case Selectedcolours26:
       Tockens1.forEach(Tocken1 => {
@@ -346,6 +439,10 @@ function ShowTockens(coloursString) {
       Tockens4.forEach(Tocken4 => {
         Tocken4.classList.remove("hide");
       });
+
+      die1.classList.remove(`hide`);
+      die4.classList.remove(`hide`);
+      TwoPlayerGame(Selectedcolours26);
 
       break;
 
@@ -360,6 +457,10 @@ function ShowTockens(coloursString) {
         Tocken1.classList.remove("hide");
       });
 
+      die3.classList.remove(`hide`);
+      die2.classList.remove(`hide`);
+      die1.classList.remove(`hide`);
+
       break;
 
     case Selectedcolours32:
@@ -372,6 +473,10 @@ function ShowTockens(coloursString) {
       Tockens4.forEach(Tocken4 => {
         Tocken4.classList.remove("hide");
       });
+
+      die2.classList.remove(`hide`);
+      die1.classList.remove(`hide`);
+      die4.classList.remove(`hide`);
 
       break;
 
@@ -386,6 +491,10 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
+      die3.classList.remove(`hide`);
+      die2.classList.remove(`hide`);
+      die4.classList.remove(`hide`);
+
       break;
 
     case Selectedcolours34:
@@ -398,6 +507,10 @@ function ShowTockens(coloursString) {
       Tockens4.forEach(Tocken4 => {
         Tocken4.classList.remove("hide");
       });
+
+      die3.classList.remove(`hide`);
+      die1.classList.remove(`hide`);
+      die4.classList.remove(`hide`);
 
       break;
 
@@ -415,6 +528,11 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
+      die3.classList.remove(`hide`);
+      die2.classList.remove(`hide`);
+      die1.classList.remove(`hide`);
+      die4.classList.remove(`hide`);
+
       break;
 
     default:
@@ -422,37 +540,21 @@ function ShowTockens(coloursString) {
   }
 }
 
-function ShowDice(){}
+// function ShowDice() { }
 
 function StartGame() {
-  colours.sort();
-  let coloursString = colours.toString();
+  coloursString = colours.toString();
   // console.log(colours);
 
   DisplayNames(coloursString);
   ShowTockens(coloursString);
 }
 
-function TwoPlayerGame() { }
+function TwoPlayerGame(coloursString) { }
 
-function ThreePlayerGame() { }
+function ThreePlayerGame(coloursString) { }
 
-function FourPlayerGame() { }
-
-
-let Selectedcolours21 = "Blue,Green";
-let Selectedcolours22 = "Blue,Red";
-let Selectedcolours23 = "Blue,Yellow";
-let Selectedcolours24 = "Green,Red";
-let Selectedcolours25 = "Green,Yellow";
-let Selectedcolours26 = "Red,Yellow";
-
-let Selectedcolours31 = "Blue,Green,Red";
-let Selectedcolours32 = "Green,Red,Yellow";
-let Selectedcolours33 = "Blue,Green,Yellow";
-let Selectedcolours34 = "Blue,Red,Yellow";
-
-let Selectedcolours41 = "Blue,Green,Red,Yellow";
+function FourPlayerGame(coloursString) { }
 
 
 
