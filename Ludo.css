@@ -261,6 +261,11 @@ body {
     border: 0.35vmin solid var(--green);
   }
 
+  hr{
+    border-top: 0.001vmin solid #00d0ff;
+    border-bottom: 0.001vmin solid #ffffff;
+  }
+
   .startgame {
     display: flex;
     flex-direction: column;

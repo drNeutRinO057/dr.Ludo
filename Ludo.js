@@ -6,6 +6,7 @@ const msg = document.querySelector(`.msg`);
 const tockens = document.querySelectorAll(`.tocken`);
 const playerNames = document.querySelectorAll(`.tickbox input[type="text"]`);
 const Placeholders = document.querySelectorAll(`.pInput`);
+const hr = document.querySelector(`hr`)
 
 const Tockens1 = document.querySelectorAll(".tocken1");
 const Tockens2 = document.querySelectorAll(".tocken2");
@@ -53,6 +54,11 @@ const Selectedcolours33 = "Blue,Green,Yellow";
 const Selectedcolours34 = "Blue,Red,Yellow";
 const Selectedcolours41 = "Blue,Green,Red,Yellow";
 
+let player1 = ``;
+let player2 = ``;
+let player3 = ``;
+let player4 = ``;
+
 const ColourCombination = {
   twoPlayers: {
     RY: 1,
@@ -69,6 +75,7 @@ let allowPlayer = 0;
 let colours = [];
 let colourIndx;
 let coloursString;
+let count = 1;
 
 
 
@@ -92,7 +99,7 @@ StartButton();
 // console.log(tickboxes);
 // console.log(option2.value);
 // console.log(option3.value);
-// console.log(p1Name);
+console.log(p1Name);
 // console.log(p2Name);
 // console.log(p3Name);
 // console.log(p4Name);
@@ -237,6 +244,11 @@ function SelectPlayer() {
         ClearColours();
         // console.log(`Allowed Players: ${allowPlayer}`);
         msg.innerText = ``;
+        if (allowPlayer === 2) {
+          hr.classList.remove(`hide`);
+        } else {
+          hr.classList.add(`hide`);
+        }
       }
     });
   });
@@ -351,20 +363,80 @@ function HideTockens() {
   });
 }
 
-function CheckColour() { }
+// function CheckColour() { }
 
-function DisplayNames() {
-  switch (allowPlayer) {
-    case 2:
-      TwoPlayerGame();
+function DisplayNames(coloursString) {
+  switch (coloursString) {
+    // console.log(p3Placeholder.placeholder);
+    // player3 = p3Name;
+
+    case Selectedcolours21:
+      p3Name.value ? player3 = p3Name.value : player3 = p3Placeholder.placeholder;
+      p4Name.value ? player4 = p4Name.value : player4 = p4Placeholder.placeholder;
+      playerC.innerHTML = player3;
+      playerB.innerHTML = player4;
+      playerA.innerHTML = ``;
+      playerD.innerHTML = ``;
       break;
 
-    case 3:
-      ThreePlayerGame();
+    case Selectedcolours26:
+      p1Name.value ? player1 = p1Name.value : player1 = p1Placeholder.placeholder;
+      p2Name.value ? player2 = p2Name.value : player2 = p2Placeholder.placeholder;
+      playerA.innerHTML = player1;
+      playerD.innerHTML = player2;
+      playerC.innerHTML = ``;
+      playerB.innerHTML = ``;
       break;
 
-    case 4:
-      FourPlayerGame();
+    case Selectedcolours31:
+      p3Name.value ? player3 = p3Name.value : player3 = p3Placeholder.placeholder;
+      p4Name.value ? player4 = p4Name.value : player4 = p4Placeholder.placeholder;
+      p1Name.value ? player1 = p1Name.value : player1 = p1Placeholder.placeholder;
+      playerC.innerHTML = player3;
+      playerB.innerHTML = player4;
+      playerA.innerHTML = player1;
+      playerD.innerHTML = ``;
+      break;
+
+    case Selectedcolours32:
+      p4Name.value ? player4 = p4Name.value : player4 = p4Placeholder.placeholder;
+      p1Name.value ? player1 = p1Name.value : player1 = p1Placeholder.placeholder;
+      p2Name.value ? player2 = p2Name.value : player2 = p2Placeholder.placeholder;
+      playerB.innerHTML = player4;
+      playerA.innerHTML = player1;
+      playerD.innerHTML = player2;
+      playerC.innerHTML = ``;
+      break;
+
+    case Selectedcolours33:
+      p3Name.value ? player3 = p3Name.value : player3 = p3Placeholder.placeholder;
+      p2Name.value ? player2 = p2Name.value : player2 = p2Placeholder.placeholder;
+      p4Name.value ? player4 = p4Name.value : player4 = p4Placeholder.placeholder;
+      playerC.innerHTML = player3;
+      playerB.innerHTML = player2;
+      playerD.innerHTML = player4;
+      playerA.innerHTML = ``;
+      break;
+
+    case Selectedcolours34:
+      p3Name.value ? player3 = p3Name.value : player3 = p3Placeholder.placeholder;
+      p1Name.value ? player1 = p1Name.value : player1 = p1Placeholder.placeholder;
+      p2Name.value ? player2 = p2Name.value : player2 = p2Placeholder.placeholder;
+      playerC.innerHTML = player3;
+      playerA.innerHTML = player1;
+      playerD.innerHTML = player2;
+      playerB.innerHTML = ``;
+      break;
+
+    case Selectedcolours41:
+      p3Name.value ? player3 = p3Name.value : player3 = p3Placeholder.placeholder;
+      p4Name.value ? player4 = p4Name.value : player4 = p4Placeholder.placeholder;
+      p1Name.value ? player1 = p1Name.value : player1 = p1Placeholder.placeholder;
+      p2Name.value ? player2 = p2Name.value : player2 = p2Placeholder.placeholder;
+      playerC.innerHTML = player3;
+      playerB.innerHTML = player4;
+      playerA.innerHTML = player1;
+      playerD.innerHTML = player2;
       break;
 
     default:
@@ -558,4 +630,4 @@ function FourPlayerGame(coloursString) { }
 
 
 
-//changes on 28/06/202 at 10:44 PM
+//changes on 29/06/202 at 01:00 PM
