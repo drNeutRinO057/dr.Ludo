@@ -99,7 +99,7 @@ StartButton();
 // console.log(tickboxes);
 // console.log(option2.value);
 // console.log(option3.value);
-console.log(p1Name);
+// console.log(p1Name);
 // console.log(p2Name);
 // console.log(p3Name);
 // console.log(p4Name);
@@ -630,4 +630,4 @@ function FourPlayerGame(coloursString) { }
 
 
 
-//changes on 29/06/202 at 01:00 PM
+//changes on 29/06/202 at 01:40 PM
