@@ -1,7 +1,9 @@
 // Defining Variables and Parameters...................................................................
 const selectbox = document.querySelector(`.selectbox`);
 const options = document.querySelectorAll(`.radio-group input[name="options"]`);
+const modesound = document.querySelector(`.modesound`);
 const tickboxes = document.querySelectorAll(`.tickbox input[type="checkbox"]`);
+const tickboxsound = document.querySelector(`.tickboxsound`);
 const msg = document.querySelector(`.msg`);
 const tockens = document.querySelectorAll(`.tocken`);
 const playerNames = document.querySelectorAll(`.tickbox input[type="text"]`);
@@ -19,6 +21,7 @@ const playerC = document.querySelector(`.boxC p`);
 const playerD = document.querySelector(`.boxD p`);
 
 const button = document.querySelector(`.start`);
+const startsound = document.querySelector(`.startsound`);
 
 const dieboxes = document.querySelectorAll(".theDice");
 
@@ -242,6 +245,7 @@ function SelectPlayer() {
         DisableAllInputs();
         ResetPlaceholders();
         ClearColours();
+        modesound.play();
         // console.log(`Allowed Players: ${allowPlayer}`);
         msg.innerText = ``;
         if (allowPlayer === 2) {
@@ -261,6 +265,7 @@ function CheckboxSelection() {
       // console.log(tickbox);
 
       if (tickbox.checked === true) {
+        tickboxsound.play();
         maxPlayer += 1;
         tickboxClass = tickbox.className;
         EnableInput(tickboxClass);
@@ -277,6 +282,7 @@ function CheckboxSelection() {
         }
 
       } else if (tickbox.checked === false) {
+        tickboxsound.play();
         maxPlayer -= 1;
         tickboxClass = tickbox.className;
         DisableInput(tickboxClass);
@@ -291,6 +297,7 @@ function CheckboxSelection() {
         }
       }
       if (maxPlayer > allowPlayer) {
+        tickboxsound.pause();
         tickbox.checked = false;
         maxPlayer -= 1;
         tickboxClass = tickbox.className;
@@ -301,6 +308,8 @@ function CheckboxSelection() {
       }
       if (allowPlayer === 0) {
         msg.innerText = `Please select number of players`;
+      }
+      if (allowPlayer > 0 && maxPlayer < allowPlayer) {
       }
       SetPlaceholders(tickbox);
       colours.sort();
@@ -340,8 +349,11 @@ function StartButton() {
         tickbox.checked === true
       ) {
         // console.log(tickbox.className);
+        startsound.play();
         msg.innerText = `Ready...`;
-        selectbox.classList.add(`hide`);
+        setTimeout(() => {
+          selectbox.classList.add(`hide`);
+        }, 1000);
       } else if (allowPlayer === 0) {
         msg.innerText = `Please select number of players`;
       } else if (maxPlayer != allowPlayer) {
