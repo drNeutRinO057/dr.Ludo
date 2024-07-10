@@ -4,6 +4,7 @@ const options = document.querySelectorAll(`.radio-group input[name="options"]`);
 const modesound = document.querySelector(`.modesound`);
 const tickboxes = document.querySelectorAll(`.tickbox input[type="checkbox"]`);
 const tickboxsound = document.querySelector(`.tickboxsound`);
+const errorsound = document.querySelector(`.errorsound`);
 const msg = document.querySelector(`.msg`);
 const tockens = document.querySelectorAll(`.tocken`);
 const playerNames = document.querySelectorAll(`.tickbox input[type="text"]`);
@@ -298,16 +299,17 @@ function CheckboxSelection() {
       }
       if (maxPlayer > allowPlayer) {
         tickboxsound.pause();
+        errorsound.play();
         tickbox.checked = false;
         maxPlayer -= 1;
         tickboxClass = tickbox.className;
         DisableInput(tickboxClass);
         colourIndx = colours.indexOf(tickboxClass)
         colours.splice(colourIndx, 1);
-        msg.innerText = `You can't select more than ${allowPlayer} players`;
+        msg.innerText = `You can't select more than ${allowPlayer} players!`;
       }
       if (allowPlayer === 0) {
-        msg.innerText = `Please select number of players`;
+        msg.innerText = `Please select number of players!`;
       }
       if (allowPlayer > 0 && maxPlayer < allowPlayer) {
       }
@@ -355,9 +357,11 @@ function StartButton() {
           selectbox.classList.add(`hide`);
         }, 1000);
       } else if (allowPlayer === 0) {
-        msg.innerText = `Please select number of players`;
+        msg.innerText = `Please select number of players!`;
+        errorsound.play();
       } else if (maxPlayer != allowPlayer) {
         msg.innerText = `Please select ${allowPlayer} tockens`;
+        errorsound.play();
       }
     });
     if (msg.innerText === `Ready...`) {
