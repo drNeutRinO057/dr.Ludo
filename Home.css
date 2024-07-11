@@ -15,12 +15,19 @@ body {
     position: relative;
 }
 
+.pages {
+    width: 60vmin;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 button {
     height: 15vmin;
     width: 15vmin;
     border: none;
     border-radius: 10%;
-    font-size: 3.5vmin;
+    font-size: 3.25vmin;
     color: #00235f;
     background-color: #1b71a7;
 }
