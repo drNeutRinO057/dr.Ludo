@@ -70,7 +70,7 @@ body {
     /* background: url("E:\Pictures\Downloads\chess-pawns-colors.jpg") no-repeat fixed center; */
   }
 
-  .welcome img{
+  .welcome img {
     width: 100%;
     height: 100%;
     position: relative;
@@ -272,7 +272,7 @@ body {
     border: 0.35vmin solid var(--green);
   }
 
-  hr{
+  hr {
     border-top: 0.001vmin solid #00d0ff;
     border-bottom: 0.001vmin solid #ffffff;
   }
@@ -809,6 +809,9 @@ body {
 .tockenbox {
   height: 100%;
   width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .diebox {
