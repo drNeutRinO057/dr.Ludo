@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: #676a71;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.switches{
+    margin-top: 3vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vmin;
+}
+
+button{
+    width: 10vmin;
+    height: 5vmin;
+    font-size: 3vmin;
+    border: none;
+    border-radius: 2vmin;
+    background-color: #ff5a5f;
+    color: #bfd7eacd;
+}
+
+button:hover{
+    background-color: #ff5a60e1;
+    cursor: pointer;
+}
+
+button:active{
+    background-color: #ff5a60cd;
+}

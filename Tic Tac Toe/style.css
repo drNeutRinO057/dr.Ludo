@@ -1,0 +1,100 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #0b3954;
+}
+
+.heading {
+  width: 100vw;
+  height: 12vmin;
+  background-color: #087e8b;
+  color: #bfd7ea;
+  font-size: 8vmin;
+  text-align: center;
+  line-height: 12vmin;
+}
+
+.main {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.winmsg {
+  font-size: 5vmin;
+  margin: 2vmin 0 1vmin;
+  color: #fb8500;
+}
+
+.container {
+  height: 60vmin;
+}
+
+.game-box {
+  width: 60vmin;
+  height: 60vmin;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3vmin;
+}
+
+.btn {
+  width: 18vmin;
+  height: 18vmin;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 2vmin;
+  background-color: #bfd7ea;
+  color: #ff5a5f;
+  font-size: 12vmin;
+}
+
+.gmbtn {
+  display: flex;
+  gap: 2vmin;
+}
+
+.gamebtn {
+  margin-top: 2.5vmin;
+  height: 8vmin;
+  padding: 0px 8px;
+  font-size: 5vmin;
+  line-height: 8vmin;
+  border: none;
+  border-radius: 2vmin;
+  background-color: #087e8b;
+  color: #bfd7ea;
+}
+
+.rst:hover {
+  background-color: #087e8b8f;
+}
+
+.rst:active {
+  color: #bfd7eaab;
+}
+
+.newgame:hover {
+  background-color: #087e8b8f;
+}
+
+.newgame:active {
+  color: #bfd7eaab;
+}
+
+p {
+  margin: 1vmin 2.5vmin;
+  font-family: "Sevillana", cursive, Carattere;
+  font-size: 2vmin;
+  text-align: end;
+  color: #bfd7ea;
+}
