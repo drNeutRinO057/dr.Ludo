@@ -16,7 +16,7 @@ body {
 }
 
 .pages {
-    width: 60vmin;
+    width: 65vmin;
     display: flex;
     align-items: center;
     justify-content: space-around;
