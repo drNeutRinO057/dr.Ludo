@@ -43,7 +43,7 @@ body {
   }
 
   .container {
-    height: 110vmin;
+    /* height: 110vmin; */
     width: 95vmin;
     /* border: 1.5vmin solid #000000; */
     border-radius: 0.5vmin;
@@ -141,10 +141,83 @@ body {
     height: 100%;
     width: 50%;
     /* padding: 0% 1.67%; */
-    padding: 0% 5.5%;
+    padding: 0% 0.5%;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .playerstop {
+    height: 14vmin;
+    width: 100%;
+    /* border-width: 1vmin 1vmin 0vmin 1vmin;
+    border-style: solid;
+    border-color: #102325; */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .playersbottom {
+    height: 14vmin;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .player1 {
+    height: 100%;
+    width: 30%;
+    color: #ffffff;
+    border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p1color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player2 {
+    height: 100%;
+    width: 30%;
+    color: #ffffff;
+    border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p2color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player3 {
+    height: 100%;
+    width: 30%;
+    color: #ffffff;
+    border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p3color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player4 {
+    height: 100%;
+    width: 30%;
+    color: #ffffff;
+    border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p4color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
   }
 
 }
@@ -534,6 +607,79 @@ body {
     justify-content: center;
   }
 
+  .playerstop {
+    height: 8vmin;
+    width: 100%;
+    /* border-width: 1vmin 1vmin 0vmin 1vmin;
+    border-style: solid;
+    border-color: #102325; */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .playersbottom {
+    height: 8vmin;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .player1 {
+    height: 100%;
+    width: 20%;
+    color: #ffffff;
+    border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p1color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player2 {
+    height: 100%;
+    width: 20%;
+    color: #ffffff;
+    border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p2color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player3 {
+    height: 100%;
+    width: 20%;
+    color: #ffffff;
+    border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p3color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .player4 {
+    height: 100%;
+    width: 20%;
+    color: #ffffff;
+    border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
+    border-style: solid;
+    border-color: #102325;
+    background-color: var(--p4color);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
 }
 
 .topbox {
@@ -820,79 +966,6 @@ body {
 .boxD,
 .boxDdd {
   background-color: var(--yellow);
-}
-
-.playerstop {
-  height: 8vmin;
-  width: 100%;
-  /* border-width: 1vmin 1vmin 0vmin 1vmin;
-  border-style: solid;
-  border-color: #102325; */
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.playersbottom {
-  height: 8vmin;
-  width: 100%;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.player1 {
-  height: 100%;
-  width: 20%;
-  color: #ffffff;
-  border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
-  border-style: solid;
-  border-color: #102325;
-  background-color: var(--p1color);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.player2 {
-  height: 100%;
-  width: 20%;
-  color: #ffffff;
-  border-width: 0.75vmin 0.75vmin 0vmin 0.75vmin;
-  border-style: solid;
-  border-color: #102325;
-  background-color: var(--p2color);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.player3 {
-  height: 100%;
-  width: 20%;
-  color: #ffffff;
-  border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
-  border-style: solid;
-  border-color: #102325;
-  background-color: var(--p3color);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.player4 {
-  height: 100%;
-  width: 20%;
-  color: #ffffff;
-  border-width: 0vmin 0.75vmin 0.75vmin 0.75vmin;
-  border-style: solid;
-  border-color: #102325;
-  background-color: var(--p4color);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .diebox {

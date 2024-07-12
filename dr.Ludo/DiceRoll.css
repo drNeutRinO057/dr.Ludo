@@ -15,19 +15,32 @@ body {
   font-family: Arial, sans-serif;
 } */
 :root {
-  --cube-size: 5.5vmin;
-  --face-shift: 2.75vmin;
+  --cube-sizeP: 10vmin;
+  --face-shiftP: 5vmin;
+  --cube-sizeL: 5.5vmin;
+  --face-shiftL: 2.5vmin;
   --die-colorRed: #db1515;
   --die-colorYellow: #e3db01;
   --die-colorBlue: #108be9;
   --die-colorGreen: #01bb04;
 }
 
-.scene {
-  width: var(--cube-size);
-  height: var(--cube-size);
-  /* perspective: 500vmin; */
+@media (orientation: portrait) {
+  .scene {
+    width: var(--cube-sizeP);
+    height: var(--cube-sizeP);
+    /* perspective: 500vmin; */
+  }
 }
+
+@media (orientation: landscape) {
+  .scene {
+    width: var(--cube-sizeL);
+    height: var(--cube-sizeL);
+    /* perspective: 500vmin; */
+  }
+}
+
 
 .cube {
   width: 100%;
@@ -134,26 +147,54 @@ body {
   border-radius: 50%;
 }
 
-.front {
-  transform: rotateY(0deg) translateZ(var(--face-shift));
+@media (orientation: portrait) {
+  .front {
+    transform: rotateY(0deg) translateZ(var(--face-shiftP));
+  }
+
+  .back {
+    transform: rotateY(180deg) translateZ(var(--face-shiftP));
+  }
+
+  .left {
+    transform: rotateY(-90deg) translateZ(var(--face-shiftP));
+  }
+
+  .right {
+    transform: rotateY(90deg) translateZ(var(--face-shiftP));
+  }
+
+  .top {
+    transform: rotateX(90deg) translateZ(var(--face-shiftP));
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ(var(--face-shiftP));
+  }
 }
 
-.back {
-  transform: rotateY(180deg) translateZ(var(--face-shift));
-}
+@media (orientation: landscape) {
+  .front {
+    transform: rotateY(0deg) translateZ(var(--face-shiftL));
+  }
 
-.left {
-  transform: rotateY(-90deg) translateZ(var(--face-shift));
-}
+  .back {
+    transform: rotateY(180deg) translateZ(var(--face-shiftL));
+  }
 
-.right {
-  transform: rotateY(90deg) translateZ(var(--face-shift));
-}
+  .left {
+    transform: rotateY(-90deg) translateZ(var(--face-shiftL));
+  }
 
-.top {
-  transform: rotateX(90deg) translateZ(var(--face-shift));
-}
+  .right {
+    transform: rotateY(90deg) translateZ(var(--face-shiftL));
+  }
 
-.bottom {
-  transform: rotateX(-90deg) translateZ(var(--face-shift));
+  .top {
+    transform: rotateX(90deg) translateZ(var(--face-shiftL));
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ(var(--face-shiftL));
+  }
 }
