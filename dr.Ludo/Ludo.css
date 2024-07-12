@@ -41,6 +41,112 @@ body {
     position: absolute;
     bottom: 0;
   }
+
+  .container {
+    height: 110vmin;
+    width: 95vmin;
+    /* border: 1.5vmin solid #000000; */
+    border-radius: 0.5vmin;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ludobox {
+    height: 95vmin;
+    width: 95vmin;
+    border: 1vmin solid #102325;
+    /* border-radius: 0.25vmin; */
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .centrebox {
+    height: 100%;
+    width: 20%;
+    /* border: 0.05vmin solid #5353537f; */
+    display: flex;
+    flex-direction: column;
+
+    /* background-color: #dee112; */
+  }
+
+  .triup {
+    width: 100%;
+    height: 100%;
+    border-left: 9.3vmin solid transparent;
+    border-right: 9.3vmin solid transparent;
+    border-top: 9.3vmin solid var(--green);
+  }
+
+  .centremid {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .trileft {
+    width: 100%;
+    height: 18.6vmin;
+    border-top: 9.3vmin solid transparent;
+    border-left: 9.3vmin solid var(--red);
+    border-bottom: 9.3vmin solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+  }
+
+  .triright {
+    width: 100%;
+    height: 18.6vmin;
+    border-top: 9.3vmin solid transparent;
+    border-right: 9.3vmin solid var(--yellow);
+    border-bottom: 9.3vmin solid transparent;
+    /* display: flex;
+      align-items: center;
+      justify-content: center; */
+    position: absolute;
+    right: -100%;
+  }
+
+  .tridown {
+    width: 100%;
+    height: 100%;
+    border-left: 9.3vmin solid transparent;
+    border-right: 9.3vmin solid transparent;
+    border-bottom: 9.3vmin solid var(--blue);
+  }
+
+  .box {
+    height: 6.2vmin;
+    width: 6.2vmin;
+    border: 0.05vmin solid #5353537f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f9fa;
+    font-size: 90%;
+  }
+
+  .tockenbox {
+    height: 100%;
+    width: 50%;
+    /* padding: 0% 1.67%; */
+    padding: 0% 5.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
 
 @media (orientation: landscape) {
@@ -204,7 +310,7 @@ body {
   /* Show checkmark when checked */
   /* .tickbox input[type="checkbox"]:checked + .custom-checkbox::after {
   display: block;
-} */
+  } */
 
   /* Change background color when checked */
   .pname1 input[type="checkbox"]:checked+.custom-checkbox {
@@ -322,30 +428,112 @@ body {
     text-align: center;
     color: #410064;
   }
-}
 
-.container {
-  height: 95vmin;
-  width: 80vmin;
-  /* border: 1.5vmin solid #000000; */
-  border-radius: 0.5vmin;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  .container {
+    height: 95vmin;
+    width: 80vmin;
+    /* border: 1.5vmin solid #000000; */
+    border-radius: 0.5vmin;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-.ludobox {
-  height: 80vmin;
-  width: 80vmin;
-  border: 1vmin solid #102325;
-  /* border-radius: 0.25vmin; */
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  .ludobox {
+    height: 80vmin;
+    width: 80vmin;
+    border: 1vmin solid #102325;
+    /* border-radius: 0.25vmin; */
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .centrebox {
+    height: 100%;
+    width: 20%;
+    /* border: 0.05vmin solid #5353537f; */
+    display: flex;
+    flex-direction: column;
+
+    /* background-color: #dee112; */
+  }
+
+  .triup {
+    width: 100%;
+    height: 100%;
+    border-left: 7.815vmin solid transparent;
+    border-right: 7.815vmin solid transparent;
+    border-top: 7.815vmin solid var(--green);
+  }
+
+  .centremid {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .trileft {
+    width: 100%;
+    height: 15.63vmin;
+    border-top: 7.815vmin solid transparent;
+    border-left: 7.815vmin solid var(--red);
+    border-bottom: 7.815vmin solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+  }
+
+  .triright {
+    width: 100%;
+    height: 15.63vmin;
+    border-top: 7.815vmin solid transparent;
+    border-right: 7.815vmin solid var(--yellow);
+    border-bottom: 7.815vmin solid transparent;
+    /* display: flex;
+      align-items: center;
+      justify-content: center; */
+    position: absolute;
+    right: -100%;
+  }
+
+  .tridown {
+    width: 100%;
+    height: 100%;
+    border-left: 7.815vmin solid transparent;
+    border-right: 7.815vmin solid transparent;
+    border-bottom: 7.815vmin solid var(--blue);
+  }
+
+  .box {
+    height: 5.21vmin;
+    width: 5.21vmin;
+    border: 0.05vmin solid #5353537f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f9fa;
+    font-size: 90%;
+  }
+
+  .tockenbox {
+    height: 100%;
+    width: 50%;
+    padding: 0% 1.67%;
+    /* padding: 0% 5.5%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
 
 .topbox {
@@ -387,8 +575,8 @@ body {
 .boxBb,
 .boxCc,
 .boxDd {
-  height: 20vmin;
-  width: 20vmin;
+  height: 66%;
+  width: 66%;
   border-radius: 0.5vmin;
   border: 0.5vmin solid #2f2323ce;
   display: flex;
@@ -405,15 +593,20 @@ body {
 .boxDleft,
 .boxDright {
   /* margin: vmin; */
+  height: 100%;
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
-.boxAaa {
-  height: 6vmin;
-  width: 6vmin;
+.boxAaa,
+.boxBbb,
+.boxCcc,
+.boxDdd {
+  height: 30%;
+  width: 60%;
   border: 0.2vmin solid #000000;
   border-radius: 50%;
   display: flex;
@@ -423,8 +616,8 @@ body {
 }
 
 .tocken {
-  width: 4.5vmin;
-  height: 4.5vmin;
+  width: 80%;
+  height: 80%;
   border: 0.3vmin dashed var(--TockenBorderPassive);
   border-radius: 50%;
   background-color: #ffffff;
@@ -434,7 +627,7 @@ body {
 }
 
 .fill {
-  border: 0.35vmin solid #000000;
+  border: 0.45vmin solid #000000;
 }
 
 .tocken1-1 .fill,
@@ -467,7 +660,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: linear-gradient(145deg, #88cbff, #004981);
+  background: linear-gradient(145deg, #a1d6ff, #006dc0);
   background-color: var(--p3color);
   opacity: 0.75;
 }
@@ -504,17 +697,6 @@ body {
   position: relative;
 }
 
-.boxBbb {
-  height: 6vmin;
-  width: 6vmin;
-  border: 0.2vmin solid #000000;
-  border-radius: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .midbox {
   height: 20%;
   width: 100%;
@@ -530,66 +712,6 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-}
-
-.centrebox {
-  height: 100%;
-  width: 20%;
-  /* border: 0.05vmin solid #5353537f; */
-  display: flex;
-  flex-direction: column;
-
-  /* background-color: #dee112; */
-}
-
-.triup {
-  width: 100%;
-  height: 100%;
-  border-left: 7.815vmin solid transparent;
-  border-right: 7.815vmin solid transparent;
-  border-top: 7.815vmin solid var(--green);
-}
-
-.centremid {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.trileft {
-  width: 100%;
-  height: 15.63vmin;
-  border-top: 7.815vmin solid transparent;
-  border-left: 7.815vmin solid var(--red);
-  border-bottom: 7.815vmin solid transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-}
-
-.triright {
-  width: 100%;
-  height: 15.63vmin;
-  border-top: 7.815vmin solid transparent;
-  border-right: 7.815vmin solid var(--yellow);
-  border-bottom: 7.815vmin solid transparent;
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
-  position: absolute;
-  right: -100%;
-}
-
-.tridown {
-  width: 100%;
-  height: 100%;
-  border-left: 7.815vmin solid transparent;
-  border-right: 7.815vmin solid transparent;
-  border-bottom: 7.815vmin solid var(--blue);
 }
 
 .rightboxes {
@@ -620,17 +742,6 @@ body {
   position: relative;
 }
 
-.boxCcc {
-  height: 6vmin;
-  width: 6vmin;
-  border: 0.2vmin solid #000000;
-  border-radius: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .downboxes {
   height: 100%;
   width: 20%;
@@ -649,28 +760,6 @@ body {
   justify-content: center;
   /* background-color: #ddd710; */
   position: relative;
-}
-
-.boxDdd {
-  height: 6vmin;
-  width: 6vmin;
-  border: 0.2vmin solid #000000;
-  border-radius: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.box {
-  height: 5.21vmin;
-  width: 5.21vmin;
-  border: 0.05vmin solid #5353537f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f9fa;
-  font-size: 90%;
 }
 
 .box51 {
@@ -804,14 +893,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-}
-
-.tockenbox {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .diebox {
