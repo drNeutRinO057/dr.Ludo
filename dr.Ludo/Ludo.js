@@ -24,7 +24,8 @@ const playerD = document.querySelector(`.boxD p`);
 const button = document.querySelector(`.start`);
 const startsound = document.querySelector(`.startsound`);
 
-const dieboxes = document.querySelectorAll(".theDice");
+const dieboxes = document.querySelectorAll(`.theDice`);
+const dice = document.querySelectorAll(`.scene`)
 
 const p1tickbox = tickboxes[0];
 const p2tickbox = tickboxes[1];
@@ -41,10 +42,15 @@ const p2Placeholder = Placeholders[1];
 const p3Placeholder = Placeholders[2];
 const p4Placeholder = Placeholders[3];
 
-const die1 = dieboxes[0];
-const die2 = dieboxes[1];
-const die3 = dieboxes[2];
-const die4 = dieboxes[3];
+const diebox2 = dieboxes[1];
+const diebox3 = dieboxes[2];
+const diebox1 = dieboxes[0];
+const diebox4 = dieboxes[3];
+
+const die1 = dice[0];
+const die2 = dice[1];
+const die3 = dice[2];
+const die4 = dice[3];
 
 const Selectedcolours21 = "Blue,Green";
 // let Selectedcolours22 = "Blue,Red";
@@ -479,8 +485,9 @@ function ShowTockens(coloursString) {
         Tocken2.classList.remove("hide");
       });
 
-      die3.classList.remove(`hide`);
-      die2.classList.remove(`hide`);
+      diebox3.classList.remove(`hide`);
+      diebox2.classList.remove(`hide`);
+      die2.classList.add(`hide`);
       TwoPlayerGame(Selectedcolours21)
 
       break;
@@ -533,8 +540,9 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
-      die1.classList.remove(`hide`);
-      die4.classList.remove(`hide`);
+      diebox1.classList.remove(`hide`);
+      diebox4.classList.remove(`hide`);
+      die4.classList.add(`hide`);
       TwoPlayerGame(Selectedcolours26);
 
       break;
@@ -550,9 +558,11 @@ function ShowTockens(coloursString) {
         Tocken1.classList.remove("hide");
       });
 
-      die3.classList.remove(`hide`);
-      die2.classList.remove(`hide`);
-      die1.classList.remove(`hide`);
+      diebox3.classList.remove(`hide`);
+      diebox2.classList.remove(`hide`);
+      diebox1.classList.remove(`hide`);
+      die2.classList.add(`hide`);
+      die3.classList.add(`hide`);
 
       break;
 
@@ -567,9 +577,11 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
-      die2.classList.remove(`hide`);
-      die1.classList.remove(`hide`);
-      die4.classList.remove(`hide`);
+      diebox2.classList.remove(`hide`);
+      diebox1.classList.remove(`hide`);
+      diebox4.classList.remove(`hide`);
+      die2.classList.add(`hide`);
+      die4.classList.add(`hide`);
 
       break;
 
@@ -584,9 +596,11 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
-      die3.classList.remove(`hide`);
-      die2.classList.remove(`hide`);
-      die4.classList.remove(`hide`);
+      diebox3.classList.remove(`hide`);
+      diebox2.classList.remove(`hide`);
+      diebox4.classList.remove(`hide`);
+      die2.classList.add(`hide`);
+      die3.classList.add(`hide`);
 
       break;
 
@@ -601,9 +615,11 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
-      die3.classList.remove(`hide`);
-      die1.classList.remove(`hide`);
-      die4.classList.remove(`hide`);
+      diebox3.classList.remove(`hide`);
+      diebox1.classList.remove(`hide`);
+      diebox4.classList.remove(`hide`);
+      die3.classList.add(`hide`);
+      die4.classList.add(`hide`);
 
       break;
 
@@ -621,10 +637,13 @@ function ShowTockens(coloursString) {
         Tocken4.classList.remove("hide");
       });
 
-      die3.classList.remove(`hide`);
-      die2.classList.remove(`hide`);
-      die1.classList.remove(`hide`);
-      die4.classList.remove(`hide`);
+      diebox3.classList.remove(`hide`);
+      diebox2.classList.remove(`hide`);
+      diebox1.classList.remove(`hide`);
+      diebox4.classList.remove(`hide`);
+      die2.classList.add(`hide`);
+      die3.classList.add(`hide`);
+      die4.classList.add(`hide`);
 
       break;
 
@@ -638,7 +657,6 @@ function ShowTockens(coloursString) {
 function StartGame() {
   coloursString = colours.toString();
   // console.log(colours);
-
   DisplayNames(coloursString);
   ShowTockens(coloursString);
 }
