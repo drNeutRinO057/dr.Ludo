@@ -359,7 +359,7 @@ function StartButton() {
           } else {
             selectbox.style.transform = `translateY(-25vw)`;
           }
-          // selectbox.classList.add(`hide`);
+          selectbox.classList.add(`hide`);
         }, 500);
       } else if (allowPlayer === 0) {
         msg.innerText = `Please select number of players!`;
