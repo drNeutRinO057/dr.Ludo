@@ -33,13 +33,284 @@ body {
 @media (orientation: portrait) {
   .selectbox {
     width: 100%;
-    height: 20vmin;
+    height: 25vmin;
     background-color: #e5f0ecc1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: space-evenly; */
     position: absolute;
     bottom: 0;
+    z-index: 2;
+  }
+
+  .welcome {
+    /* width: 20%;
+    height: 100%; */
+    font-size: 7.5vmin;
+    /* object-fit: contain; */
+    /* background-color: #0930309f; */
+    /* display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative; */
+    /* background: url("E:\Pictures\Downloads\chess-pawns-colors.jpg") no-repeat fixed center; */
+  }
+
+  .welcome img {
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* position: relative; */
+    /* z-index: -1; */
+  }
+
+  .gamemode {
+    width: 30%;
+    height: 100%;
+    padding: 2vmin 0vmin;
+    margin-right: 2.5vmin;
+    /* border-top: 2.5vmin solid #c5f1f1cb; */
+    font-size: 3vmin;
+    background-color: #c5f1f1cb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .radio-group {
+    width: 100%;
+    height: 50%;
+    padding: 2vmin;
+    /* border-radius: 5%; */
+    background-color: #c6ffffcb;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .radio-group input[type="radio"] {
+    width: 3.5vmin;
+    height: 3.5vmin;
+    accent-color: #8d2626;
+    cursor: pointer;
+  }
+
+  .radio-group label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .nameboxes {
+    margin-right: 2.5vmin;
+  }
+
+  .p2 label,
+  .p3 label,
+  .p4 label {
+    /* width: 30%;
+      height: 100%; */
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .name1,
+  .name2,
+  .name3,
+  .name4 {
+    height: 5vmin;
+    margin: 0.5vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tickbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide the default checkbox */
+  .tickbox input[type="checkbox"] {
+    position: absolute;
+    display: none;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom checkbox */
+  .tickbox .custom-checkbox {
+    display: inline-block;
+    width: 4vmin;
+    height: 4vmin;
+    /* margin-bottom: 2.5vmin; */
+    background-color: #f0f0f0;
+    border: 0.75vmin solid #dddddd;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .tickbox .custom-checkbox1 {
+    border-color: var(--red);
+  }
+
+  .tickbox .custom-checkbox2 {
+    border-color: var(--yellow);
+  }
+
+  .tickbox .custom-checkbox3 {
+    border-color: var(--blue);
+  }
+
+  .tickbox .custom-checkbox4 {
+    border-color: var(--green);
+  }
+
+  /* Checkmark (hidden by default) */
+  .tickbox .custom-checkbox::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Show checkmark when checked */
+  /* .tickbox input[type="checkbox"]:checked + .custom-checkbox::after {
+    display: block;
+    } */
+
+  /* Change background color when checked */
+  .pname1 input[type="checkbox"]:checked+.custom-checkbox {
+    background: linear-gradient(145deg, #fe8484, #ff1515);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #6f0000;
+    background-color: var(--red);
+  }
+
+  /* Change background color when checked */
+  .pname2 input[type="checkbox"]:checked+.custom-checkbox {
+    background: linear-gradient(145deg, #fcffd5, #eeff00);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #717900;
+    background-color: var(--yellow);
+    border-color: var(--yellow);
+  }
+
+  /* Change background color when checked */
+  .pname3 input[type="checkbox"]:checked+.custom-checkbox {
+    background: linear-gradient(145deg, #84b7fe, #227bf9);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #003784;
+    background-color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  /* Change background color when checked */
+  .pname4 input[type="checkbox"]:checked+.custom-checkbox {
+    background: linear-gradient(145deg, #cdfac7, #1aff00);
+    box-shadow: 0.15vmin 0.15vmin 0.25vmin #0e9100;
+    background-color: var(--green);
+    border-color: var(--green);
+  }
+
+  .pInput {
+    width: 75%;
+    height: 3.5vmin;
+    text-align: center;
+    font-size: 2.25vmin;
+    border-radius: 1.25vmin;
+  }
+
+  .pInput:focus {
+    border: none;
+  }
+
+  .pInput1:disabled,
+  .pInput2:disabled,
+  .pInput3:disabled,
+  .pInput4:disabled {
+    border: 0.35vmin solid #000000;
+  }
+
+  .pInput1:enabled {
+    border: 0.35vmin solid var(--red);
+  }
+
+  .pInput2:enabled {
+    border: 0.35vmin solid var(--yellow);
+  }
+
+  .pInput3:enabled {
+    border: 0.35vmin solid var(--blue);
+  }
+
+  .pInput4:enabled {
+    border: 0.35vmin solid var(--green);
+  }
+
+  hr {
+    border-top: 0.001vmin solid #00d0ff;
+    border-bottom: 0.001vmin solid #ffffff;
+  }
+
+  .startgame {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .startgame button {
+    width: 12vmin;
+    height: 5vmin;
+    font-size: 2.5vmin;
+    line-height: 5vmin;
+    color: #bbfff4;
+    background-color: #13468e;
+    border: none;
+    border-radius: 2vmin;
+    margin-bottom: 2vmin;
+    background: linear-gradient(145deg, #7cb2ff, #00337bb9);
+    box-shadow: 0.15vmin 0.15vmin 0.5vmin #292929,
+      -0.15vmin -0.15vmin 0.5vmin #fafafa;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: #bbfff4;
+    background-color: #1870eb;
+  }
+
+  button:active {
+    color: #00ff1e;
+    border: 0.005vmin solid #69a8ff;
+    background: #004ebb9a;
+    box-shadow: none;
+
+    /* background: linear-gradient(145deg, #cacaca, #f0f0f0);
+      box-shadow: 2px 2px 4px #5a5a5a, 
+                  -2px -2px 4px #ffffff; */
+  }
+
+  .msg {
+    width: 75%;
+    font-size: 3vmin;
+    text-align: center;
+    color: #410064;
   }
 
   .container {
@@ -240,20 +511,21 @@ body {
     width: 100%;
     height: 17.5%;
     font-size: 7.5vmin;
+    /* object-fit: contain; */
     /* background-color: #0930309f; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: relative; */
     /* background: url("E:\Pictures\Downloads\chess-pawns-colors.jpg") no-repeat fixed center; */
   }
 
   .welcome img {
     width: 100%;
     height: 100%;
-    position: relative;
-    z-index: -1;
+    /* position: relative; */
+    /* z-index: -1; */
   }
 
   .gamemode {
