@@ -354,8 +354,13 @@ function StartButton() {
         startsound.play();
         msg.innerText = `Ready...`;
         setTimeout(() => {
-          selectbox.classList.add(`hide`);
-        }, 1000);
+          if (window.innerWidth > window.innerHeight) {
+            selectbox.style.transform = `translateX(-20vw)`;
+          } else {
+            selectbox.style.transform = `translateY(-25vw)`;
+          }
+          // selectbox.classList.add(`hide`);
+        }, 500);
       } else if (allowPlayer === 0) {
         msg.innerText = `Please select number of players!`;
         errorsound.play();
