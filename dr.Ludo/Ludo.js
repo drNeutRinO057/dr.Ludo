@@ -11,6 +11,11 @@ const playerNames = document.querySelectorAll(`.tickbox input[type="text"]`);
 const Placeholders = document.querySelectorAll(`.pInput`);
 const hr = document.querySelector(`hr`)
 
+// 1--Red
+// 2--Green
+// 3--Blue
+// 4--Yellow
+
 const Tockens1 = document.querySelectorAll(".tocken1");
 const Tockens2 = document.querySelectorAll(".tocken2");
 const Tockens3 = document.querySelectorAll(".tocken3");
@@ -25,7 +30,9 @@ const button = document.querySelector(`.start`);
 const startsound = document.querySelector(`.startsound`);
 
 const dieboxes = document.querySelectorAll(`.theDice`);
-const dice = document.querySelectorAll(`.scene`)
+// const dice = document.querySelectorAll(`.cube`);
+
+const boxes = document.querySelectorAll(`.box`)
 
 const p1tickbox = tickboxes[0];
 const p2tickbox = tickboxes[1];
@@ -42,9 +49,9 @@ const p2Placeholder = Placeholders[1];
 const p3Placeholder = Placeholders[2];
 const p4Placeholder = Placeholders[3];
 
+const diebox1 = dieboxes[0];
 const diebox2 = dieboxes[1];
 const diebox3 = dieboxes[2];
-const diebox1 = dieboxes[0];
 const diebox4 = dieboxes[3];
 
 const die1 = dice[0];
@@ -63,6 +70,11 @@ const Selectedcolours32 = "Green,Red,Yellow";
 const Selectedcolours33 = "Blue,Green,Yellow";
 const Selectedcolours34 = "Blue,Red,Yellow";
 const Selectedcolours41 = "Blue,Green,Red,Yellow";
+
+const T2B = [52, 1, 2, 3, 4, 11, 12, 19, 20, 21, 22, 23];
+const B2T = [26, 27, 28, 29, 30, 37, 38, 45, 46, 47, 48, 49];
+const L2R = [39, 40, 41, 42, 43, 50, 51, 6, 7, 8, 9, 10];
+const R2L = [13, 14, 15, 16, 17, 24, 25, 32, 33, 34, 35, 36];
 
 let player1 = ``;
 let player2 = ``;
@@ -86,6 +98,9 @@ let colours = [];
 let colourIndx;
 let coloursString;
 let count = 1;
+let dieVal;
+let clickedPos;
+let currPos;
 
 
 
@@ -97,6 +112,7 @@ window.onload = () => {
   HideDice();
   DisableButtons();
   HideTockens();
+  DisableAllTockens();
 };
 
 SelectPlayer();
@@ -241,6 +257,13 @@ function ClearColours() {
   colours.length = 0;
 }
 
+function HideTockens() {
+  tockens.forEach((tocken) => {
+    tocken.classList.add(`hide`);
+    // console.log(tocken);
+  });
+}
+
 function SelectPlayer() {
   options.forEach((option) => {
     option.addEventListener("click", () => {
@@ -264,6 +287,37 @@ function SelectPlayer() {
     });
   });
   return allowPlayer;
+}
+
+function DisableAllTockens() {
+  tockens.forEach((tocken) => {
+    tocken.disabled = true;
+  })
+  // console.log(`tockens disabled`);
+}
+
+function EnableRedTockens() {
+  Tockens1.forEach((tocken) => {
+    tocken.disabled = false;
+  })
+}
+
+function EnableYellowTockens() {
+  Tockens4.forEach((tocken) => {
+    tocken.disabled = false;
+  })
+}
+
+function EnableBlueTockens() {
+  Tockens3.forEach((tocken) => {
+    tocken.disabled = false;
+  })
+}
+
+function EnableGreenTockens() {
+  Tockens2.forEach((tocken) => {
+    tocken.disabled = false;
+  })
 }
 
 function CheckboxSelection() {
@@ -322,17 +376,17 @@ function CheckboxSelection() {
       SetPlaceholders(tickbox);
       colours.sort();
 
-      console.log(`Checked: ${tickbox.checked}`);
-      console.log(`Selected: ${maxPlayer}`);
-      console.log(`Allowed: ${allowPlayer}`);
-      console.log(`Colours: ${colours}`);
+      // console.log(`Checked: ${tickbox.checked}`);
+      // console.log(`Selected: ${maxPlayer}`);
+      // console.log(`Allowed: ${allowPlayer}`);
+      // console.log(`Colours: ${colours}`);
     });
   });
 }
 
 function SetPlaceholders(tickbox) {
   if (tickbox.checked === true) {
-    console.log(tickboxClass);
+    // console.log(tickboxClass);
     let Placeholder = document.querySelector(`.${tickboxClass}Input`);
     Placeholder.placeholder = `Player${maxPlayer}`;
   } else if (tickbox.checked === false) {
@@ -340,11 +394,6 @@ function SetPlaceholders(tickbox) {
     let Placeholder = document.querySelector(`.${tickboxClass}Input`);
     Placeholder.placeholder = "Player";
   }
-}
-
-function getSelectedRadioValue(radioName) {
-  // const selectedRadio1 = document.querySelector(`input[name="${radioName}"]:checked`);
-  // return selectedRadio ? selectedRadio.value : null;
 }
 
 function StartButton() {
@@ -359,12 +408,12 @@ function StartButton() {
         // console.log(tickbox.className);
         startsound.play();
         msg.innerText = `Ready...`;
+        if (window.innerWidth > window.innerHeight) {
+          selectbox.style.transform = `translateX(-20vw)`;
+        } else {
+          selectbox.style.transform = `translateY(-25vw)`;
+        }
         setTimeout(() => {
-          if (window.innerWidth > window.innerHeight) {
-            selectbox.style.transform = `translateX(-20vw)`;
-          } else {
-            selectbox.style.transform = `translateY(-25vw)`;
-          }
           selectbox.classList.add(`hide`);
         }, 500);
       } else if (allowPlayer === 0) {
@@ -382,15 +431,6 @@ function StartButton() {
     console.log(colours);
   });
 }
-
-function HideTockens() {
-  tockens.forEach((tocken) => {
-    tocken.classList.add(`hide`);
-    // console.log(tocken);
-  });
-}
-
-// function CheckColour() { }
 
 function DisplayNames(coloursString) {
   switch (coloursString) {
@@ -472,12 +512,12 @@ function DisplayNames(coloursString) {
 }
 
 function ShowTockens(coloursString) {
-  console.log("ShowTockens");
+  // console.log("ShowTockens");
 
   switch (coloursString) {
     case Selectedcolours21:
       // Blue-Green
-      console.log("21 Selected");
+      // console.log("21 Selected");
       Tockens3.forEach(Tocken3 => {
         Tocken3.classList.remove("hide");
       });
@@ -488,7 +528,7 @@ function ShowTockens(coloursString) {
       diebox3.classList.remove(`hide`);
       diebox2.classList.remove(`hide`);
       die2.classList.add(`hide`);
-      TwoPlayerGame(Selectedcolours21)
+      // TwoPlayerGame(Selectedcolours21)
 
       break;
 
@@ -543,7 +583,7 @@ function ShowTockens(coloursString) {
       diebox1.classList.remove(`hide`);
       diebox4.classList.remove(`hide`);
       die4.classList.add(`hide`);
-      TwoPlayerGame(Selectedcolours26);
+      // TwoPlayerGame(Selectedcolours26);
 
       break;
 
@@ -652,21 +692,349 @@ function ShowTockens(coloursString) {
   }
 }
 
-// function ShowDice() { }
-
 function StartGame() {
   coloursString = colours.toString();
-  // console.log(colours);
   DisplayNames(coloursString);
   ShowTockens(coloursString);
+
+  switch (allowPlayer) {
+    case 2:
+      TwoPlayerGame(coloursString);
+      break;
+
+    case 3:
+      ThreePlayerGame(coloursString);
+      break;
+
+    case 4:
+      FourPlayerGame(coloursString);
+      break;
+
+    default:
+      break;
+  }
 }
 
-function TwoPlayerGame(coloursString) { }
+function TwoPlayerGame(coloursString) {
+  // console.log(`2 player game`);
+  switch (coloursString) {
+    case Selectedcolours21:
+      die3.addEventListener(`click`, () => {
+        dieVal = outcome;
+        console.log(dieVal);
+        die3.disabled = true;
+        EnableBlueTockens();
+        Tockens3.forEach((tocken) => {
+          tocken.addEventListener(`click`, () => {
+            DisableAllTockens();
+            if (window.innerHeight > window.innerWidth) {
+              DrawBlueTockensP(tocken);
+              MoveTockenP(tocken);
+            } else {
+              DrawBlueTockensL(tocken);
+              MoveTockenL(tocken);
+            }
+            // console.log(`Blue Tocken Clicked`);
+          })
+        })
+        // die3.classList.add(`hide`);
+        // die2.classList.remove(`hide`);
+      })
+
+      break;
+
+    default:
+      break;
+  }
+}
 
 function ThreePlayerGame(coloursString) { }
 
 function FourPlayerGame(coloursString) { }
 
 
+function DrawRedTockens(tocken) {
+  if (tocken.parentElement.className === 'boxCcc boxCc1') {
+    tocken.style.transform = 'translate(8vw, 1.75vw)';
 
-//changes on 12/07/202 at 07:56 PM
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500); // Time should match the transition duration
+  }
+}
+
+function DrawYellowTockens(tocken) {
+  if (tocken.parentElement.className === 'boxCcc boxCc1') {
+    tocken.style.transform = 'translate(8vw, 1.75vw)';
+
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500); // Time should match the transition duration
+  }
+}
+
+function DrawBlueTockensP(tocken) {
+  if (tocken.parentElement.className === 'boxCcc boxCc1') {
+    tocken.style.transform = 'translate(15.75vw, 3.5vw)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '1';
+    }, 500); // Time should match the transition duration
+  }
+  else if (tocken.parentElement.className === 'boxCcc boxCc2') {
+    tocken.style.transform = 'translate(27.5vw, 3.5vw)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '2';
+    }, 500); // Time should match the transition duration
+    // DisableAllTockens();
+  }
+  else if (tocken.parentElement.className === 'boxCcc boxCc3') {
+    tocken.style.transform = 'translate(27.5vw, 15.1vw)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '3';
+    }, 500); // Time should match the transition duration
+    // DisableAllTockens();
+  }
+  else if (tocken.parentElement.className === 'boxCcc boxCc4') {
+    tocken.style.transform = 'translate(16vw, 15.2vw)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '4';
+    }, 500); // Time should match the transition duration
+    // DisableAllTockens();
+  }
+
+}
+
+function DrawBlueTockensL(tocken) {
+  if (tocken.parentElement.className === 'boxCcc boxCc1') {
+    tocken.style.transform = 'translate(13.5vh, 3vh)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '1';
+    }, 500); // Time should match the transition duration
+  }
+  else if (tocken.parentElement.className === 'boxCcc boxCc2') {
+    tocken.style.transform = 'translate(23vh, 3vh)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '2';
+    }, 500); // Time should match the transition duration
+    // DisableAllTockens();
+  }
+  else if (tocken.parentElement.className === 'boxCcc boxCc3') {
+    tocken.style.transform = 'translate(23vh, 12.5vh)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '3';
+    }, 500); // Time should match the transition duration
+    // DisableAllTockens();
+  }
+  else if (tocken.parentElement.className === 'boxCcc boxCc4') {
+    tocken.style.transform = 'translate(13.5vh, 12.5vh)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+      tocken.style.zIndex = '4';
+    }, 500); // Time should match the transition duration
+    // DisableAllTockens();
+  }
+
+}
+
+function DrawGreenTockens(tocken) {
+  if (tocken.parentElement.className === 'boxCcc boxCc1') {
+    tocken.style.transform = 'translate(8vw, 1.75vw)';
+
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box27`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500); // Time should match the transition duration
+  }
+}
+
+function MoveTockenP(tocken) {
+  // clickedPos = tocken.parentElement.id;
+  // console.log(clickedPos);
+  for (let i = 0; i < dieVal; i++) {
+    // console.log(tocken.parentElement.id);
+    currPos = tocken.parentElement.id;
+    currPos = Number(currPos);
+    console.log(currPos);
+    // console.log(B2T.includes(currPos));
+    // console.log(B2T);
+
+    if (T2B.includes(currPos)) {
+      tocken.style.transform = 'translate(0, 6.2vw)';
+      setTimeout(() => {
+        if (currPos < 52) {
+          document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        } else {
+          document.getElementById(`1`).appendChild(tocken);
+        }
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (B2T.includes(currPos)) {
+      tocken.style.transform = 'translate(0, -6.2vw)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+    else if (L2R.includes(currPos)) {
+      tocken.style.transform = 'translate(6.2vw, 0)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+    else if (R2L.includes(currPos)) {
+      tocken.style.transform = 'translate(-6.2vw, 0)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+    else if (currPos === 5) {
+      tocken.style.transform = 'translate(6.2vw, 6.2vw)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+    else if (currPos === 18) {
+      tocken.style.transform = 'translate(-6.2vw, 6.2vw)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+    else if (currPos === 31) {
+      tocken.style.transform = 'translate(-6.2vw, -6.2vw)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+    else if (currPos === 44) {
+      tocken.style.transform = 'translate(6.2vw, -6.2vw)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500);
+    }
+  }
+}
+
+function MoveTockenL(tocken) {
+  // clickedPos = tocken.parentElement.id;
+  // console.log(clickedPos);
+  for (let i = 0; i < dieVal; i++) {
+    // console.log(tocken.parentElement.id);
+    currPos = tocken.parentElement.id;
+    currPos = Number(currPos);
+    console.log(currPos);
+    // console.log(B2T.includes(currPos));
+    // console.log(B2T);
+
+    if (T2B.includes(currPos)) {
+      tocken.style.transform = 'translate(0, 5.25vh)';
+      setTimeout(() => {
+        if (currPos < 52) {
+          document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        } else {
+          document.getElementById(`1`).appendChild(tocken);
+        }
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (B2T.includes(currPos)) {
+      tocken.style.transform = 'translate(0, -5.25vh)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (L2R.includes(currPos)) {
+      tocken.style.transform = 'translate(5.25vh, 0)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (R2L.includes(currPos)) {
+      tocken.style.transform = 'translate(-5.25vh, 0)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (currPos === 5) {
+      tocken.style.transform = 'translate(5.25vh, 5.25vh)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (currPos === 18) {
+      tocken.style.transform = 'translate(-5.25vh, 5.25vh)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (currPos === 31) {
+      tocken.style.transform = 'translate(-5.25vh, -5.25vh)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+    else if (currPos === 44) {
+      tocken.style.transform = 'translate(5.25vh, -5.25vh)';
+      setTimeout(() => {
+        document.getElementById(`${currPos + 1}`).appendChild(tocken);
+        tocken.style.transform = 'translate(0, 0)';
+      }, 500); // Time should match the transition duration
+    }
+
+
+    // if (tocken.parentElement.id === 'parent2') {
+    //   child.style.transform = 'translate(-222.5px, 0)';
+
+    //   // Move child after animation
+    //   setTimeout(() => {
+    //     parent1.appendChild(child);
+    //     child.style.transform = 'translate(0, 0)';
+    //   }, 500); // Time should match the transition duration
+    // }
+  }
+}
+
+
+
+
+//changes on 14/07/202 at 08:26 PM

@@ -3,23 +3,23 @@
 let randomX = 0;
 let randomY = 0;
 let randomZ = 0;
+let outcome;
 
-const face = document.querySelectorAll(".face");
-const cubes = document.querySelectorAll(".cube");
+const faces = document.querySelectorAll(".face");
+const dice = document.querySelectorAll(".cube");
 
 function rollDice() {
   randomX = Math.floor(Math.random() * 4) * 90;
   randomY = Math.floor(Math.random() * 4) * 90;
   randomZ = Math.floor(Math.random() * 4) * 90;
-  cubes.forEach(cube => {
-    cube.addEventListener("click", () => {
-      cube.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
+  dice.forEach(die => {
+    die.addEventListener("click", () => {
+      die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
     })
   });
-  return randomX, randomY, randomZ;
 }
 
-face.forEach((element) => {
+faces.forEach((element) => {
   element.addEventListener("click", () => {
     rollDice();
     OutCome();
@@ -29,12 +29,13 @@ face.forEach((element) => {
 
 function OutCome() {
   let index = `${randomX / 90},${randomY / 90},${randomZ / 90}`;
-  let outcome = mapping[index];
+  outcome = mapping[index];
   // if (outcome) {
 
   // }
   // console.log(index);
-  console.log(`${outcome}   (${index})`);
+  // console.log(`${outcome}   (${index})`);
+  // return outcome;
 }
 
 const mapping = {

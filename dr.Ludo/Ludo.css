@@ -869,6 +869,7 @@ body {
     justify-content: center;
     background-color: #f5f9fa;
     font-size: 90%;
+    position: relative;
   }
 
   .tockenbox {
@@ -1025,8 +1026,8 @@ body {
 .boxBbb,
 .boxCcc,
 .boxDdd {
-  height: 30%;
-  width: 60%;
+  height: 27%;
+  width: 54%;
   border: 0.2vmin solid #000000;
   border-radius: 50%;
   display: flex;
@@ -1036,14 +1037,17 @@ body {
 }
 
 .tocken {
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 85%;
   border: 0.3vmin dashed var(--TockenBorderPassive);
   border-radius: 50%;
   background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.5s;
+  z-index: 1;
+  position: relative;
 }
 
 .fill {
