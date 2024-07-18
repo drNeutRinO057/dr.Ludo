@@ -101,6 +101,10 @@ let chanceRedTocken = false;
 let chanceYellowTocken = false;
 let chanceBlueTocken = false;
 let chanceGreenTocken = false;
+let RedDieRolled = false;
+let YellowDieRolled = false;
+let BlueDieRolled = false;
+let GreenDieRolled = false;
 
 let maxPlayer = 0;
 let allowPlayer = 0;
@@ -753,13 +757,14 @@ function YellowRun() { }
 
 function BlueRun() {
   die3.addEventListener(`click`, () => {
+    BlueDieRolled = true;
     if (chanceBlue === true) {
       DiceClick();
       dieVal = outcome;
       // console.log(dieVal);
       Tockens3.forEach((tocken) => {
         tocken.addEventListener(`click`, () => {
-          if (window.innerHeight > window.innerWidth && chanceBlueTocken === true) {
+          if (window.innerHeight > window.innerWidth && chanceBlueTocken === true && BlueDieRolled === true) {
             if (dieVal === 6) {
               DrawBlueTockensP(tocken);
               MoveTockenP(tocken);
@@ -771,8 +776,9 @@ function BlueRun() {
               die3.classList.add(`hide`);
               die2.classList.remove(`hide`);
               chanceGreenTocken = true;
+              BlueDieRolled = false;
             }, (500));
-          } else if (window.innerHeight < window.innerWidth && chanceBlueTocken === true) {
+          } else if (window.innerHeight < window.innerWidth && chanceBlueTocken === true && BlueDieRolled === true) {
             if (dieVal === 6) {
               DrawBlueTockensL(tocken);
               MoveTockenL(tocken);
@@ -784,6 +790,7 @@ function BlueRun() {
               die3.classList.add(`hide`);
               die2.classList.remove(`hide`);
               chanceGreenTocken = true;
+              BlueDieRolled = false;
             }, (500));
           }
         })
@@ -800,13 +807,14 @@ function BlueRun() {
 
 function GreenRun() {
   die2.addEventListener(`click`, () => {
+    GreenDieRolled = true;
     if (chanceGreen === true) {
       DiceClick();
       dieVal = outcome;
       // console.log(dieVal);
       Tockens2.forEach((tocken) => {
         tocken.addEventListener(`click`, () => {
-          if (window.innerHeight > window.innerWidth && chanceGreenTocken === true) {
+          if (window.innerHeight > window.innerWidth && chanceGreenTocken === true && GreenDieRolled === true) {
             if (dieVal === 6) {
               DrawGreenTockensP(tocken);
               MoveTockenP(tocken);
@@ -818,8 +826,9 @@ function GreenRun() {
               die2.classList.add(`hide`);
               die3.classList.remove(`hide`);
               chanceBlueTocken = true;
+              GreenDieRolled = false;
             }, (500));
-          } else if (window.innerHeight < window.innerWidth && chanceGreenTocken === true) {
+          } else if (window.innerHeight < window.innerWidth && chanceGreenTocken === true && GreenDieRolled === true) {
             if (dieVal === 6) {
               DrawGreenTockensP(tocken);
               MoveTockenL(tocken);
@@ -831,6 +840,7 @@ function GreenRun() {
               die2.classList.add(`hide`);
               die3.classList.remove(`hide`);
               chanceBlueTocken = true;
+              GreenDieRolled = false;
             }, (500));
           }
         })
@@ -1255,4 +1265,4 @@ function MoveTockenL(tocken) {
 
 
 
-//changes on 14/07/202 at 08:26 PM
+//changes on 19/07/202 at 01:15 PM

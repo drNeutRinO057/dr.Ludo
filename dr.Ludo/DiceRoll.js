@@ -9,9 +9,9 @@ const faces = document.querySelectorAll(".face");
 const dice = document.querySelectorAll(".cube");
 
 function rollDice() {
-  randomX = Math.floor(Math.random() * 4) * 90;
-  randomY = Math.floor(Math.random() * 4) * 90;
-  randomZ = Math.floor(Math.random() * 4) * 90;
+  randomX = Math.ceil(Math.random() * 3) * 90;
+  randomY = Math.ceil(Math.random() * 3) * 90;
+  randomZ = Math.ceil(Math.random() * 3) * 90;
   dice.forEach(die => {
       die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
   });
