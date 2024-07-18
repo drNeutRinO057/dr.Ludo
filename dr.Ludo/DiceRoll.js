@@ -13,19 +13,17 @@ function rollDice() {
   randomY = Math.floor(Math.random() * 4) * 90;
   randomZ = Math.floor(Math.random() * 4) * 90;
   dice.forEach(die => {
-    die.addEventListener("click", () => {
       die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
-    })
   });
 }
 
-faces.forEach((element) => {
-  element.addEventListener("click", () => {
-    rollDice();
-    OutCome();
-    // let faceVal = element.innerHTML;
+function DiceClick() {
+  faces.forEach((element) => {
+      rollDice();
+      OutCome();
+      // let faceVal = element.innerHTML;
   });
-});
+}
 
 function OutCome() {
   let index = `${randomX / 90},${randomY / 90},${randomZ / 90}`;

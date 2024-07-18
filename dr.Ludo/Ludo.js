@@ -30,6 +30,7 @@ const button = document.querySelector(`.start`);
 const startsound = document.querySelector(`.startsound`);
 
 const dieboxes = document.querySelectorAll(`.theDice`);
+const die3Faces = document.querySelectorAll(`.payer3 .face`);
 // const dice = document.querySelectorAll(`.cube`);
 
 const boxes = document.querySelectorAll(`.box`)
@@ -101,6 +102,15 @@ let count = 1;
 let dieVal;
 let clickedPos;
 let currPos;
+let chanceRed = false;
+let chanceYellow = false;
+let chanceBlue = false;
+let chanceGreen = false;
+
+let chanceRedTocken = false;
+let chanceYellowTocken = false;
+let chanceBlueTocken = false;
+let chanceGreenTocken = false;
 
 
 
@@ -719,24 +729,41 @@ function TwoPlayerGame(coloursString) {
   // console.log(`2 player game`);
   switch (coloursString) {
     case Selectedcolours21:
+      chanceBlue = true;
+      chanceBlueTocken = true;
       die3.addEventListener(`click`, () => {
-        dieVal = outcome;
-        console.log(dieVal);
-        die3.disabled = true;
-        EnableBlueTockens();
-        Tockens3.forEach((tocken) => {
-          tocken.addEventListener(`click`, () => {
-            DisableAllTockens();
-            if (window.innerHeight > window.innerWidth) {
-              DrawBlueTockensP(tocken);
-              MoveTockenP(tocken);
-            } else {
-              DrawBlueTockensL(tocken);
-              MoveTockenL(tocken);
-            }
-            // console.log(`Blue Tocken Clicked`);
+        if (chanceBlue === true) {
+          DiceClick();
+          dieVal = outcome;
+          // console.log(dieVal);
+          Tockens3.forEach((tocken) => {
+            tocken.addEventListener(`click`, () => {
+              if (window.innerHeight > window.innerWidth && chanceBlueTocken === true) {
+                if (dieVal === 6) {
+                  DrawBlueTockensP(tocken);
+                  MoveTockenP(tocken);
+                } else {
+                  MoveTockenP(tocken);
+                }
+                dieVal != 6 ? chanceBlueTocken = false : chanceBlueTocken = true;
+              } else if (window.innerHeight < window.innerWidth && chanceBlueTocken === true) {
+                if (dieVal === 6) {
+                  DrawBlueTockensL(tocken);
+                  MoveTockenL(tocken);
+                } else {
+                  DrawBlueTockensL(tocken);
+                }
+                dieVal != 6 ? chanceBlueTocken = false : chanceBlueTocken = true;
+              }
+            })
           })
-        })
+          console.log(dieVal);
+          chanceBlue = false;
+          chanceGreen = true;
+        }
+        // console.log(die3);
+        // console.log(typeof (dieVal));
+        EnableBlueTockens();
         // die3.classList.add(`hide`);
         // die2.classList.remove(`hide`);
       })
@@ -753,32 +780,108 @@ function ThreePlayerGame(coloursString) { }
 function FourPlayerGame(coloursString) { }
 
 
-function DrawRedTockens(tocken) {
-  if (tocken.parentElement.className === 'boxCcc boxCc1') {
-    tocken.style.transform = 'translate(8vw, 1.75vw)';
 
+function DrawRedTockensP(tocken) {
+  if (tocken.parentElement.className === 'boAaa boxAa1') {
+    tocken.style.transform = 'translate(-3.5vw, 15.75vw)';
     // Move child after animation
     setTimeout(() => {
-      document.querySelector(`.box27`).appendChild(tocken);
+      document.querySelector(`.box40`).appendChild(tocken);
       tocken.style.transform = 'translate(0, 0)';
     }, 500); // Time should match the transition duration
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa2') {
+    tocken.style.transform = 'translate(-3.5vw, 27.5vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa3') {
+    tocken.style.transform = 'translate(-15.1vw, 27.5vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa4') {
+    tocken.style.transform = 'translate(-15.2vw, 16vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
   }
 }
 
-function DrawYellowTockens(tocken) {
-  if (tocken.parentElement.className === 'boxCcc boxCc1') {
-    tocken.style.transform = 'translate(8vw, 1.75vw)';
-
+function DrawRedTockensL(tocken) {
+  if (tocken.parentElement.className === 'boAaa boxAa1') {
+    tocken.style.transform = 'translate(-3.5vw, 15.75vw)';
     // Move child after animation
     setTimeout(() => {
-      document.querySelector(`.box27`).appendChild(tocken);
+      document.querySelector(`.box40`).appendChild(tocken);
       tocken.style.transform = 'translate(0, 0)';
     }, 500); // Time should match the transition duration
   }
+  else if (tocken.parentElement.className === 'boxAaa boxAa2') {
+    tocken.style.transform = 'translate(-3.5vw, 27.5vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa3') {
+    tocken.style.transform = 'translate(-15.1vw, 27.5vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa4') {
+    tocken.style.transform = 'translate(-15.2vw, 16vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+}
+
+function DrawYellowTockensP(tocken) {
+  if (tocken.parentElement.className === 'boAaa boxAa1') {
+    tocken.style.transform = 'translate(-3.5vw, 15.75vw)';
+    // Move child after animation
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500); // Time should match the transition duration
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa2') {
+    tocken.style.transform = 'translate(-3.5vw, 27.5vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa3') {
+    tocken.style.transform = 'translate(-15.1vw, 27.5vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+  else if (tocken.parentElement.className === 'boxAaa boxAa4') {
+    tocken.style.transform = 'translate(-15.2vw, 16vw)';
+    setTimeout(() => {
+      document.querySelector(`.box40`).appendChild(tocken);
+      tocken.style.transform = 'translate(0, 0)';
+    }, 500);
+  }
+}
+
+function DrawYellowTockensL(tocken) {
 }
 
 function DrawBlueTockensP(tocken) {
-  if (tocken.parentElement.className === 'boxCcc boxCc1') {
+  if (dieVal === 6 && tocken.parentElement.className === 'boxCcc boxCc1') {
     tocken.style.transform = 'translate(15.75vw, 3.5vw)';
     // Move child after animation
     setTimeout(() => {
@@ -787,7 +890,7 @@ function DrawBlueTockensP(tocken) {
       tocken.style.zIndex = '1';
     }, 500); // Time should match the transition duration
   }
-  else if (tocken.parentElement.className === 'boxCcc boxCc2') {
+  else if (dieVal === 6 && tocken.parentElement.className === 'boxCcc boxCc2') {
     tocken.style.transform = 'translate(27.5vw, 3.5vw)';
     // Move child after animation
     setTimeout(() => {
@@ -797,7 +900,7 @@ function DrawBlueTockensP(tocken) {
     }, 500); // Time should match the transition duration
     // DisableAllTockens();
   }
-  else if (tocken.parentElement.className === 'boxCcc boxCc3') {
+  else if (dieVal === 6 && tocken.parentElement.className === 'boxCcc boxCc3') {
     tocken.style.transform = 'translate(27.5vw, 15.1vw)';
     // Move child after animation
     setTimeout(() => {
@@ -807,7 +910,7 @@ function DrawBlueTockensP(tocken) {
     }, 500); // Time should match the transition duration
     // DisableAllTockens();
   }
-  else if (tocken.parentElement.className === 'boxCcc boxCc4') {
+  else if (dieVal === 6 && tocken.parentElement.className === 'boxCcc boxCc4') {
     tocken.style.transform = 'translate(16vw, 15.2vw)';
     // Move child after animation
     setTimeout(() => {
@@ -863,17 +966,12 @@ function DrawBlueTockensL(tocken) {
 
 }
 
-function DrawGreenTockens(tocken) {
-  if (tocken.parentElement.className === 'boxCcc boxCc1') {
-    tocken.style.transform = 'translate(8vw, 1.75vw)';
-
-    // Move child after animation
-    setTimeout(() => {
-      document.querySelector(`.box27`).appendChild(tocken);
-      tocken.style.transform = 'translate(0, 0)';
-    }, 500); // Time should match the transition duration
-  }
+function DrawGreenTockensP(tocken) {
 }
+
+function DrawGreenTockensL(tocken) {
+}
+
 
 function MoveTockenP(tocken) {
   // clickedPos = tocken.parentElement.id;
