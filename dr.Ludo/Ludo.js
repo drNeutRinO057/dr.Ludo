@@ -105,6 +105,10 @@ let RedDieRolled = false;
 let YellowDieRolled = false;
 let BlueDieRolled = false;
 let GreenDieRolled = false;
+let RedOut = false;
+let YellowOut = false;
+let BlueOut = false;
+let GreenOut = false;
 
 let maxPlayer = 0;
 let allowPlayer = 0;
@@ -760,41 +764,60 @@ function BlueRun() {
     BlueDieRolled = true;
     if (chanceBlue === true) {
       DiceClick();
+      // console.log(`${outcome}   (${index})`);
       dieVal = outcome;
       // console.log(dieVal);
-      Tockens3.forEach((tocken) => {
-        tocken.addEventListener(`click`, () => {
-          if (window.innerHeight > window.innerWidth && chanceBlueTocken === true && BlueDieRolled === true) {
-            if (dieVal === 6) {
-              DrawBlueTockensP(tocken);
-              MoveTockenP(tocken);
-            } else {
-              MoveTockenP(tocken);
+      if (dieVal === 6) {
+        BlueOut = true;
+      }
+      if (BlueOut === true) {
+        Tockens3.forEach((tocken) => {
+          tocken.addEventListener(`click`, () => {
+            if (window.innerHeight > window.innerWidth && chanceBlueTocken === true && BlueDieRolled === true) {
+              if (dieVal === 6) {
+                DrawBlueTockensP(tocken);
+                MoveTockenP(tocken);
+                BlueRun();
+              } else {
+                MoveTockenP(tocken);
+              }
+              dieVal != 6 ? chanceBlueTocken = false : chanceBlueTocken = true;
+              if (dieVal != 6) {
+                setTimeout(() => {
+                  die3.classList.add(`hide`);
+                  die2.classList.remove(`hide`);
+                  chanceGreenTocken = true;
+                  BlueDieRolled = false;
+                }, (500));
+              }
+            } else if (window.innerHeight < window.innerWidth && chanceBlueTocken === true && BlueDieRolled === true) {
+              if (dieVal === 6) {
+                DrawBlueTockensL(tocken);
+                MoveTockenL(tocken);
+                BlueRun();
+              } else {
+                MoveTockenL(tocken);
+              }
+              dieVal != 6 ? chanceBlueTocken = false : chanceBlueTocken = true;
+              if (dieVal != 6) {
+                setTimeout(() => {
+                  die3.classList.add(`hide`);
+                  die2.classList.remove(`hide`);
+                  chanceGreenTocken = true;
+                  BlueDieRolled = false;
+                }, (500));
+              }
             }
-            dieVal != 6 ? chanceBlueTocken = false : chanceBlueTocken = true;
-            setTimeout(() => {
-              die3.classList.add(`hide`);
-              die2.classList.remove(`hide`);
-              chanceGreenTocken = true;
-              BlueDieRolled = false;
-            }, (500));
-          } else if (window.innerHeight < window.innerWidth && chanceBlueTocken === true && BlueDieRolled === true) {
-            if (dieVal === 6) {
-              DrawBlueTockensL(tocken);
-              MoveTockenL(tocken);
-            } else {
-              MoveTockenL(tocken);
-            }
-            dieVal != 6 ? chanceBlueTocken = false : chanceBlueTocken = true;
-            setTimeout(() => {
-              die3.classList.add(`hide`);
-              die2.classList.remove(`hide`);
-              chanceGreenTocken = true;
-              BlueDieRolled = false;
-            }, (500));
-          }
+          })
         })
-      })
+      } else {
+        setTimeout(() => {
+          die3.classList.add(`hide`);
+          die2.classList.remove(`hide`);
+          chanceGreenTocken = true;
+          BlueDieRolled = false;
+        }, (700));
+      }
       console.log(dieVal);
       chanceBlue = false;
       chanceGreen = true;
@@ -812,39 +835,51 @@ function GreenRun() {
       DiceClick();
       dieVal = outcome;
       // console.log(dieVal);
-      Tockens2.forEach((tocken) => {
-        tocken.addEventListener(`click`, () => {
-          if (window.innerHeight > window.innerWidth && chanceGreenTocken === true && GreenDieRolled === true) {
-            if (dieVal === 6) {
-              DrawGreenTockensP(tocken);
-              MoveTockenP(tocken);
-            } else {
-              MoveTockenP(tocken);
+      if (dieVal === 6) {
+        GreenOut = true;
+      }
+      if (GreenOut === true) {
+        Tockens2.forEach((tocken) => {
+          tocken.addEventListener(`click`, () => {
+            if (window.innerHeight > window.innerWidth && chanceGreenTocken === true && GreenDieRolled === true) {
+              if (dieVal === 6) {
+                DrawGreenTockensP(tocken);
+                MoveTockenP(tocken);
+              } else {
+                MoveTockenP(tocken);
+              }
+              dieVal != 6 ? chanceGreenTocken = false : chanceGreenTocken = true;
+              setTimeout(() => {
+                die2.classList.add(`hide`);
+                die3.classList.remove(`hide`);
+                chanceBlueTocken = true;
+                GreenDieRolled = false;
+              }, (500));
+            } else if (window.innerHeight < window.innerWidth && chanceGreenTocken === true && GreenDieRolled === true) {
+              if (dieVal === 6) {
+                DrawGreenTockensP(tocken);
+                MoveTockenL(tocken);
+              } else {
+                MoveTockenL(tocken);
+              }
+              dieVal != 6 ? chanceGreenTocken = false : chanceGreenTocken = true;
+              setTimeout(() => {
+                die2.classList.add(`hide`);
+                die3.classList.remove(`hide`);
+                chanceBlueTocken = true;
+                GreenDieRolled = false;
+              }, (500));
             }
-            dieVal != 6 ? chanceGreenTocken = false : chanceGreenTocken = true;
-            setTimeout(() => {
-              die2.classList.add(`hide`);
-              die3.classList.remove(`hide`);
-              chanceBlueTocken = true;
-              GreenDieRolled = false;
-            }, (500));
-          } else if (window.innerHeight < window.innerWidth && chanceGreenTocken === true && GreenDieRolled === true) {
-            if (dieVal === 6) {
-              DrawGreenTockensP(tocken);
-              MoveTockenL(tocken);
-            } else {
-              MoveTockenL(tocken);
-            }
-            dieVal != 6 ? chanceGreenTocken = false : chanceGreenTocken = true;
-            setTimeout(() => {
-              die2.classList.add(`hide`);
-              die3.classList.remove(`hide`);
-              chanceBlueTocken = true;
-              GreenDieRolled = false;
-            }, (500));
-          }
+          })
         })
-      })
+      } else {
+        setTimeout(() => {
+          die2.classList.add(`hide`);
+          die3.classList.remove(`hide`);
+          chanceBlueTocken = true;
+          GreenDieRolled = false;
+        }, (700));
+      }
       console.log(dieVal);
       chanceGreen = false;
       chanceBlue = true;

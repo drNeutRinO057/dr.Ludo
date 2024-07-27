@@ -4,14 +4,15 @@ let randomX = 0;
 let randomY = 0;
 let randomZ = 0;
 let outcome;
+let index;
 
 const faces = document.querySelectorAll(".face");
 const dice = document.querySelectorAll(".cube");
 
 function rollDice() {
-  randomX = Math.ceil(Math.random() * 3) * 90;
-  randomY = Math.ceil(Math.random() * 3) * 90;
-  randomZ = Math.ceil(Math.random() * 3) * 90;
+  randomX = Math.floor(Math.random() * 4) * 90;
+  randomY = Math.floor(Math.random() * 4) * 90;
+  randomZ = Math.floor(Math.random() * 4) * 90;
   dice.forEach(die => {
       die.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
   });
@@ -26,7 +27,7 @@ function DiceClick() {
 }
 
 function OutCome() {
-  let index = `${randomX / 90},${randomY / 90},${randomZ / 90}`;
+  index = `${randomX / 90},${randomY / 90},${randomZ / 90}`;
   outcome = mapping[index];
   // if (outcome) {
 
