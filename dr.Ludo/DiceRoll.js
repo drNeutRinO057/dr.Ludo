@@ -19,11 +19,9 @@ function rollDice() {
 }
 
 function DiceClick() {
-  faces.forEach((element) => {
-      rollDice();
-      OutCome();
-      // let faceVal = element.innerHTML;
-  });
+    rollDice();
+    OutCome();
+    // let faceVal = element.innerHTML;
 }
 
 function OutCome() {

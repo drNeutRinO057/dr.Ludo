@@ -777,7 +777,18 @@ function BlueRun() {
               if (dieVal === 6) {
                 DrawBlueTockensP(tocken);
                 MoveTockenP(tocken);
-                BlueRun();
+                die3.addEventListener(`click`, () => {
+                  DiceClick();
+                  dieVal = outcome;
+                  if (dieVal != 6) {
+                    setTimeout(() => {
+                      die3.classList.add(`hide`);
+                      die2.classList.remove(`hide`);
+                      chanceGreenTocken = true;
+                      BlueDieRolled = false;
+                    }, (500));
+                  }
+                })
               } else {
                 MoveTockenP(tocken);
               }
@@ -794,7 +805,18 @@ function BlueRun() {
               if (dieVal === 6) {
                 DrawBlueTockensL(tocken);
                 MoveTockenL(tocken);
-                BlueRun();
+                die3.addEventListener(`click`, () => {
+                  DiceClick();
+                  dieVal = outcome;
+                  if (dieVal != 6) {
+                    setTimeout(() => {
+                      die3.classList.add(`hide`);
+                      die2.classList.remove(`hide`);
+                      chanceGreenTocken = true;
+                      BlueDieRolled = false;
+                    }, (500));
+                  }
+                })
               } else {
                 MoveTockenL(tocken);
               }
